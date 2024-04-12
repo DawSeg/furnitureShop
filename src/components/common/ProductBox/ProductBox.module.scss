@@ -33,8 +33,7 @@
     }
 
     .buttons {
-      display: flex;
-      justify-content: space-between;
+      display: none;
     }
   }
 
@@ -78,5 +77,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+.root:hover {
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .price {
+    background-color: $primary;
   }
 }
