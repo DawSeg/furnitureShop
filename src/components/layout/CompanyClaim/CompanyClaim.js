@@ -8,7 +8,7 @@ import { faMobileAlt, faShoppingBasket } from '@fortawesome/free-solid-svg-icons
 const CompanyClaim = () => {
 
   let cartItemCount = initialState.cart.products.length;
-  const displayItemCount = cartItemCount > 99999 ? '99999+' : cartItemCount;
+  const displayItemCount = cartItemCount > 999 ? '999+' : cartItemCount;
 
   return (
     <div className={styles.root}>
