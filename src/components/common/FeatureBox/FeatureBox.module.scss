@@ -57,8 +57,7 @@
       margin: 0;
     }
 
-    p {
-    }
+    p {}
   }
 
   &.active {
@@ -74,5 +73,22 @@
     .content {
       color: $primary;
     }
+  }
+}
+
+.link:hover {
+  text-decoration: none;
+  
+  .iconWrapper {
+    color: #ffffff;
+
+    &::after {
+      background-color: $primary;
+      border-color: $primary;
+    }
+  }
+
+  .content {
+    color: $primary;
   }
 }
