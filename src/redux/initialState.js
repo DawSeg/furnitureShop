@@ -18,6 +18,7 @@ const initialState = {
       image: './images/furnitures/bed1.jpg',
       favourite: false,
       comparison: false,
+      oldPrice: 45,
     },
     {
       id: 'aenean-ru-bristique-2',
@@ -54,6 +55,7 @@ const initialState = {
       image: './images/furnitures/bed4.jpg',
       favourite: false,
       comparison: false,
+      oldPrice: 45,
     },
     {
       id: 'aenean-ru-bristique-5',
@@ -102,6 +104,7 @@ const initialState = {
       image: './images/furnitures/bed8.jpg',
       favourite: false,
       comparison: false,
+      oldPrice: 45,
     },
     {
       id: 'aenean-ru-bristique-9',
@@ -138,6 +141,7 @@ const initialState = {
       image: './images/furnitures/bed11.jpg',
       favourite: false,
       comparison: false,
+      oldPrice: 45,
     },
     {
       id: 'aenean-ru-bristique-12',
@@ -162,6 +166,7 @@ const initialState = {
       image: './images/furnitures/bed2.jpg',
       favourite: false,
       comparison: false,
+      oldPrice: 45,
     },
     {
       id: 'aenean-ru-bristique-14',
@@ -198,6 +203,7 @@ const initialState = {
       image: './images/furnitures/bed5.jpg',
       favourite: true,
       comparison: true,
+      oldPrice: 45,
     },
     {
       id: 'aenean-ru-bristique-17',
@@ -234,6 +240,7 @@ const initialState = {
       image: './images/furnitures/bed8.jpg',
       favourite: false,
       comparison: false,
+      oldPrice: 45,
     },
     {
       id: 'aenean-ru-bristique-20',
@@ -258,6 +265,7 @@ const initialState = {
       image: './images/furnitures/bed10.jpg',
       favourite: false,
       comparison: true,
+      oldPrice: 45,
     },
     {
       id: 'aenean-ru-bristique-22',
@@ -294,6 +302,7 @@ const initialState = {
       image: './images/furnitures/bed2.jpg',
       favourite: true,
       comparison: true,
+      oldPrice: 45,
     },
   ],
   cart: {
