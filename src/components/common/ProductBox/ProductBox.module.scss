@@ -64,7 +64,7 @@
     &::before {
       content: "";
       position: absolute;
-      bottom: -1px;
+      bottom: -2.2px;
       left: 50%;
       width: 30px;
       border-bottom: 4px solid $primary;
@@ -89,4 +89,16 @@
   .price {
     background-color: $primary;
   }
+}
+
+.active {
+  background-color: $primary;
+  border: none;
+   svg {
+    color: #ffffff;
+  }
+}
+
+.outlineButton {
+margin-right: 3px;
 }
