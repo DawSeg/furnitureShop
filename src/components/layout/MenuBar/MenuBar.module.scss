@@ -4,7 +4,7 @@
   box-shadow: 2px 3.464px 6px rgba(1, 2, 2, 0.2);
   background-color: #ffffff;
 
-  :global(.container) > :global(.row) {
+  :global(.container)> :global(.row) {
     height: 84px;
   }
 
@@ -47,5 +47,11 @@
         border-color: $text-color;
       }
     }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1368px) {
+  .root {
+    height: 100px;
   }
 }
