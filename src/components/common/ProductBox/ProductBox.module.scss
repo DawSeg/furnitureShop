@@ -104,7 +104,8 @@ margin-right: 4px;
 }
 
 .oldPrice {
-  color: grey;
+  font-size: 15px;
+  color: $old-price;
   text-decoration: line-through;
   margin-left: 65px;
 }

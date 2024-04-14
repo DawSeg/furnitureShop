@@ -1,9 +1,18 @@
 $base-padding: 24px;
 
-$header-topbar-bg: #434343;
-$header-bg: #363636;
-$footer-claim-bg: #2a2a2a;
-$footer-bg: #363636;
-$primary: #d58e32;
-$text-color: #2a2a2a;
-$form-border-color: #292929;
+//NOT USED VARIABLES
+$gray: #434343;
+$dark-gray: #363636;
+$light-black: #292929;
+$dark-orange: #d58f34;
+$light-gray: rgb(124, 124, 124);
+
+//USED VARIABLES
+$header-topbar-bg: $gray;
+$header-bg: $dark-gray;
+$footer-claim-bg: $light-black;
+$footer-bg: $dark-gray;
+$primary: $dark-orange;
+$text-color: $light-black;
+$form-border-color: $light-black;
+$old-price: $light-gray;
