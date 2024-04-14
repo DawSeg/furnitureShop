@@ -87,6 +87,7 @@
   }
   
   .price {
+    display: flex;
     background-color: $primary;
   }
 }
@@ -105,7 +106,7 @@ margin-right: 4px;
 
 .oldPrice {
   font-size: 15px;
-  color: $old-price;
+  color: grey;
   text-decoration: line-through;
-  margin-left: 65px;
+  margin-left: 115px;
 }

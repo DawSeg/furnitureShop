@@ -56,8 +56,6 @@
       font-weight: 600;
       margin: 0;
     }
-
-    p {}
   }
 
   &.active {
@@ -91,4 +89,8 @@
   .content {
     color: $primary;
   }
+}
+
+a {
+  text-decoration: none;
 }
