@@ -54,7 +54,6 @@
     "clsx": "^1.2.1",
     "enzyme": "^3.10.0",
     "fontawesome": "^5.6.3",
-    "husky": "^9.0.11",
     "npm-run-all": "^4.1.5",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -75,6 +74,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.5.4",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "husky": "^9.0.11",
     "lint-staged": "^9.4.0",
     "onchange": "^6.1.0",
     "prettier": "^1.19.1",
