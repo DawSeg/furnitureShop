@@ -48,10 +48,10 @@ const ProductBox = ({ name, price, promo, stars, image, favourite, comparison, o
         </Button>
       </div>
       {oldPrice ? (
-          <div className={styles.oldPrice}>
-            $ {oldPrice}
-          </div>
-        ) : null}
+        <div className={styles.oldPrice}>
+          $ {oldPrice}
+        </div>
+      ) : null}
       <div className={styles.price}>
         <Button noHover variant='small' className={styles.price}>
           $ {price}
@@ -67,6 +67,10 @@ ProductBox.propTypes = {
   price: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
+  image: PropTypes.string.isRequired,
+  favourite: PropTypes.bool.isRequired,
+  comparison: PropTypes.bool.isRequired,
+  oldPrice: PropTypes.number,
 };
 
 export default ProductBox;

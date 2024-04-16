@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "start": "run-p start:* ",
-    "start:react": "react-scripts start",
+    "start:react": "set NODE_OPTIONS=--openssl-legacy-provider &&  react-scripts start",
     "start-silent": "run-p start > /dev/null",
     "start-and-test": "run-p start-silent test ",
     "start-and-watch": "run-p start watch ",
@@ -55,7 +55,7 @@
     "enzyme": "^3.10.0",
     "fontawesome": "^5.6.3",
     "npm-run-all": "^4.1.5",
-    "prop-types": "^15.7.2",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
@@ -72,8 +72,8 @@
     "sass": "^1.54.3"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.5.4",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "babel-eslint": "^10.1.0",
     "lint-staged": "^9.4.0",
     "onchange": "^6.1.0",
     "prettier": "^1.19.1",

@@ -36,7 +36,7 @@ const CompanyClaim = () => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 // CompanyClaim.propTypes = {};
