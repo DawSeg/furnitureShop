@@ -16,3 +16,18 @@ $primary: $dark-orange;
 $text-color: $light-black;
 $form-border-color: $light-black;
 $old-price: $light-gray;
+
+
+//HOVER ANIMATION
+$animation-duration-bg: 250ms;
+$animation-duration-text: 250ms;
+
+%hover-effect {
+  transition-duration: $animation-duration-bg;
+  transition-property: background-color, color, fill; 
+}
+
+%icon-hover-effect {
+  transition-duration: $animation-duration-text;
+  transition-property: color, fill;
+}
