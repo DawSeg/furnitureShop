@@ -9,8 +9,8 @@ import styles from './ProductSearch.module.scss';
 const ProductSearch = () => (
   <form action='' className={styles.root}>
     <div className={styles.category}>
-      <FontAwesomeIcon className={styles.icon} icon={faListUl} />
-      <select name='' id=''>
+      <FontAwesomeIcon className={'d-none d-sm-block ' + styles.icon} icon={faListUl} />
+      <select className='ps-1 ' name='' id=''>
         <option value=''>Select a category</option>
       </select>
       <FontAwesomeIcon className={styles.icon} icon={faCaretDown} />

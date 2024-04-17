@@ -4,14 +4,14 @@
   box-shadow: 2px 3.464px 6px rgba(1, 2, 2, 0.2);
   background-color: #ffffff;
 
-  :global(.container)> :global(.row) {
+  :global(.container) > :global(.row) {
     height: 84px;
   }
-
+ 
   .menu {
     display: flex;
     align-self: stretch;
-
+    
     ul {
       margin: 0;
       padding: 0;
@@ -50,8 +50,33 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1368px) {
+@media (min-width: 576px) and (max-width: 996px) {
   .root {
-    height: 100px;
+    height: 120px;
   }
+}
+
+@media (max-width: 575px){
+  .root {
+    .menu {
+      width: 15%;
+    }
+    .productSearch {
+      width: 85%;
+    } 
+    .button:focus {
+
+      box-shadow: none;
+    }
+    .icon:hover {
+      color: $primary;
+    }
+  }
+  
+  .navbarMenu {
+    position:absolute;
+    width: 100vw;
+    left: -570%;
+    top: 100%;
+  } 
 }
