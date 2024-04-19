@@ -13,6 +13,18 @@
     position: relative;
     width: 200px;
 
+    &:hover {
+
+      .icon:last-child {
+        color: $primary;
+      }
+
+      span {
+        color: $primary;
+      }
+    }
+
+
     .icon:first-child {
       color: $primary;
       position: relative;
@@ -37,6 +49,10 @@
     z-index: 1;
     list-style: none;
     transform: translatey(-2px);
+
+    span {
+      margin-left: 5px;
+    }
   }
 
   .hiddenList {
@@ -47,6 +63,7 @@
     width: 155px;
 
     .categoryButton {
+      color: $text-color;
       width: 155px;
       padding-left: 10px;
 
@@ -55,14 +72,6 @@
         color: $alt-text-color;
       }
     }
-  }
-}
-
-.list:hover {
-
-  .icon,
-  span {
-    color: $primary;
   }
 }
 
@@ -76,17 +85,6 @@
   }
 }
 
-.hiddenCategory {
-  display: none;
-  list-style: disc;
-  padding-right: 20px;
-}
-
-.visibleCategory:hover .hiddenCategory {
-  display: block;
-}
-
-
 .searchField {
   display: flex;
   align-items: center;
@@ -97,24 +95,32 @@
     padding-left: 10px;
     font-size: 14px;
     outline: none;
+    width: 275px;
 
     &::placeholder {
-      color: $text-color;
+      color: $light-gray;
     }
   }
 
   button {
+    margin: auto;
     border: 0;
     background-color: transparent;
     outline: none;
+
+    &:hover {
+      color: $primary;
+    }
   }
 }
 
 @media (max-width: 575px) {
 
   .root {
+    width: 105%;
+
     .category {
-      width: 150px;
+      width: 170px;
 
       .visibleList {
         left: 5px;
@@ -131,6 +137,10 @@
 
     button {
       margin-right: 5px;
+    }
+
+    .icon {
+      right: 0;
     }
   }
 }

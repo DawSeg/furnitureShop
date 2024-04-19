@@ -18,12 +18,13 @@ const ProductSearch = () => {
             <span className={styles.hide}>Select a category</span>
             {categories.map(category => (
               <ul className={styles.hiddenList} key={category.id}>
-                <li className={styles.categoryButton}>{category.name}</li>
+                <a href='#'><li className={styles.categoryButton}>{category.name}</li></a>
               </ul>
             ))}
           </li>
           <FontAwesomeIcon className={styles.icon} icon={faCaretDown} />
         </ul>
+
       </div>
       <div className={styles.searchField}>
         <input placeholder='Search products...' type='text' />
