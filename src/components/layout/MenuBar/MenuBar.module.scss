@@ -4,14 +4,15 @@
   box-shadow: 2px 3.464px 6px rgba(1, 2, 2, 0.2);
   background-color: #ffffff;
 
-  :global(.container) > :global(.row) {
+  :global(.container)> :global(.row) {
     height: 84px;
   }
- 
+
   .menu {
     display: flex;
     align-self: stretch;
-    
+    padding: 0;
+
     ul {
       margin: 0;
       padding: 0;
@@ -25,6 +26,11 @@
     }
 
     a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 80px;
+      height: 85px;
       color: $text-color;
       text-transform: uppercase;
       font-size: 12px;
@@ -34,7 +40,7 @@
       align-items: center;
       border-top: 4px solid #ffffff;
       font-weight: 500;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
 
       &:hover,
       &.active {
@@ -52,31 +58,34 @@
 
 @media (min-width: 576px) and (max-width: 996px) {
   .root {
-    height: 120px;
+    height: 131px;
   }
 }
 
-@media (max-width: 575px){
+@media (max-width: 575px) {
   .root {
     .menu {
       width: 15%;
     }
+
     .productSearch {
       width: 85%;
-    } 
+    }
+
     .button:focus {
 
       box-shadow: none;
     }
+
     .icon:hover {
       color: $primary;
     }
   }
-  
+
   .navbarMenu {
-    position:absolute;
+    position: absolute;
     width: 100vw;
     left: -570%;
     top: 100%;
-  } 
+  }
 }
