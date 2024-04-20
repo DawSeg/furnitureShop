@@ -3,7 +3,7 @@ export const getAll = ({ cart }) => cart.products;
 export const getCount = ({ cart }) => cart.products.length;
 
 /* action name creator */
-const reducerName = 'cart';
+const reducerName = 'products';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
