@@ -2,19 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faExchangeAlt, faShoppingBasket } 
+import { faStar, faExchangeAlt, faShoppingBasket }
   from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
-import { toggleFavourite } from '../../../redux/productsRedux';
+import { toggleCompare, toggleFavourite } from '../../../redux/productsRedux';
 
 const ProductBox = ({ name, id, price, promo, stars, image, favourite, comparison, oldPrice }) => {
-  
+
   const dispatch = useDispatch();
   const favouriteClickHandler = (e) => {
     e.preventDefault();
     dispatch(toggleFavourite(id));
+  };
+  const compareClickHandler = e => {
+    e.preventDefault();
+    dispatch(toggleCompare(id));
   };
 
   return (
@@ -46,13 +50,13 @@ const ProductBox = ({ name, id, price, promo, stars, image, favourite, compariso
       <div className={styles.line}></div>
       <div className={styles.actions}>
         <div className={styles.outlines}>
-          <Button onClick={favouriteClickHandler} variant='outline' 
-            className={`${styles.outlineButton} ${favourite ? styles.active : ''}`} 
+          <Button onClick={favouriteClickHandler} variant='outline'
+            className={`${styles.outlineButton} ${favourite ? styles.active : ''}`}
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button variant='outline' 
-            className={`${styles.outlineButton} ${comparison ? styles.active : ''}`} 
+          <Button onClick={compareClickHandler} variant='outline'
+            className={`${styles.outlineButton} ${comparison ? styles.active : ''}`}
           >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>

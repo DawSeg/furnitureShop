@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import ComparisonBar from '../../views/ComparisonBar/ComparisonBar';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
@@ -8,6 +8,7 @@ const MainLayout = ({ children }) => (
   <div>
     <Header />
     {children}
+    <ComparisonBar />
     <Footer />
   </div>
 );
