@@ -18,7 +18,11 @@ const ProductBox = ({ name, id, price, promo, stars, image, favourite, compariso
   };
   const compareClickHandler = e => {
     e.preventDefault();
-    dispatch(addToCompare(id));
+    if (comparisonList.length >= 4) {
+      alert('The maximum number of products for comparison is 4');
+    } else {
+      dispatch(addToCompare(id));
+    }
   };
 
   return (
@@ -55,7 +59,7 @@ const ProductBox = ({ name, id, price, promo, stars, image, favourite, compariso
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button onClick={compareClickHandler} variant='outline' 
+          <Button onClick={compareClickHandler} variant='outline'
             className={`${styles.outlineButton} ${comparison ? styles.active : ''}`}
           >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
