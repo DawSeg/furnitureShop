@@ -5,7 +5,7 @@ import ProductCard from '../../features/ProductCard/ProductCard';
 const ComparisonBar = () => {
 
   return (
-    <div className={styles.bar}>
+    <div className={'' + styles.bar}>
       <ProductCard />
     </div>
   );

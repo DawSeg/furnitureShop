@@ -1,7 +1,7 @@
 /* selectors */
 export const getAll = ({ products }) => products;
 export const getCount = ({ products }) => products.length;
-
+export const getCompared = ({products}) => products.filter(product => product.comparison);
 export const getNew = ({ products }) =>
   products.filter(item => item.newFurniture === true);
 
@@ -11,12 +11,12 @@ const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
 const TOGGLE_FAVOURITE = createActionName('TOGGLE_FAVOURITE');
-const TOGGLE_COMPARE = createActionName('TOGGLE_COMPARE');
+const ADD_TO_COMPARE = createActionName('ADD_TO_COMPARE');
 const REMOVE_COMPARE = createActionName('REMOVE_COMPARE');
 
 /* action creators */
 export const toggleFavourite = payload => ({ payload, type: TOGGLE_FAVOURITE });
-export const toggleCompare = payload => ({ payload, type: TOGGLE_COMPARE });
+export const addToCompare = payload => ({ payload, type: ADD_TO_COMPARE });
 export const removeCompare = payload => ({ payload, type: REMOVE_COMPARE });
 
 /* reducer */
@@ -28,10 +28,10 @@ export default function reducer(statePart = [], action = {}) {
           ? { ...product, favourite: !product.favourite }
           : product
       );
-    case TOGGLE_COMPARE:
+    case ADD_TO_COMPARE:
       return statePart.map(product =>
         product.id === action.payload
-          ? { ...product, comparison: !product.comparison }
+          ? { ...product, comparison: true }
           : product
       );
     case REMOVE_COMPARE:
