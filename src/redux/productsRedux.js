@@ -35,7 +35,11 @@ export default function reducer(statePart = [], action = {}) {
           : product
       );
     case REMOVE_COMPARE:
-      return statePart.filter(product => product.id !== action.payload); 
+      return statePart.map(product =>
+        product.id === action.payload
+          ? { ...product, comparison: false }
+          : product
+      );
     default:
       return statePart;
   }
