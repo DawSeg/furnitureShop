@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './ProductCard.module.scss';
+import styles from './ComparisonBar.module.scss';
 import { getCompared, removeCompare } from '../../../redux/productsRedux';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../common/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
-const ProductCard = () => {
+const ComparisonBar = () => {
   const comparedProducts = useSelector(state => getCompared(state));
   const dispatch = useDispatch();
   const removeHandler = (productId) => {
@@ -14,12 +14,11 @@ const ProductCard = () => {
   };
 
   return (
-    <div className={'col-3' + styles.productCard}>
+    <div className={styles.productCard}>
       {comparedProducts.map(product =>
         <div className={styles.product} key={product.id}>
-          <h3>{product.name}</h3>
           <img src={product.image} alt={product.name} />
-          <Button onClick={(e) => { e.preventDefault(); removeHandler(product.id); }}
+          <Button className={styles.removeButton} onClick={(e) => { e.preventDefault(); removeHandler(product.id); }}
             variant='small'
           >
             <FontAwesomeIcon icon={faWindowClose} />
@@ -30,4 +29,4 @@ const ProductCard = () => {
   );
 };
 
-export default ProductCard;
+export default ComparisonBar;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ComparisonBar from '../../views/ComparisonBar/ComparisonBar';
+import ComparisonBar from '../../features/ComparisonBar/ComparisonBar';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
