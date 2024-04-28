@@ -15,7 +15,7 @@ const FeatureBoxes = () => (
   <div className={styles.root}>
     <div className='container'>
       <div className='row'>
-        <div className='col'>
+        <div className='col '>
           <FeatureBox icon={faTruck}>
             <h5>Free shipping</h5>
             <p>All orders</p>

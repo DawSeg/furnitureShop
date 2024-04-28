@@ -94,3 +94,10 @@
 a {
   text-decoration: none;
 }
+
+@media (max-width: 767px) {
+  .root {
+    height: 165px;
+    height: 142px;
+  }
+}
