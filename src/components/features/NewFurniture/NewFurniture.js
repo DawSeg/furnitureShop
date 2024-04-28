@@ -58,7 +58,7 @@ const NewFurniture = ({ categories, products }) => {
                   <li key={item.id}>
                     <a
                       className={item.id === activeCategory ? styles.active : ''}
-                      onClick={() => this.handleCategoryChange(item.id)}
+                      onClick={() => handleCategoryChange(item.id)}
                     >
                       {item.name}
                     </a>
@@ -74,7 +74,7 @@ const NewFurniture = ({ categories, products }) => {
         <Swipeable leftAction={handleSwipeLeft} rightAction={handleSwipeRight}>
           <div className='row'>
             {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
-              <div key={item.id} className='col-3'>
+              <div key={item.id} className='col-xl-3 col-md-6 col-sm-12'>
                 <ProductBox {...item} />
               </div>
             ))}

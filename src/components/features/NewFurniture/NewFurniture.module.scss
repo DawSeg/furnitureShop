@@ -5,7 +5,7 @@
     margin-bottom: 30px;
     position: relative;
 
-    :global(.row) > * {
+    :global(.row)>* {
       border-bottom: 4px solid #e2e2e2;
       padding: 0;
     }
@@ -34,10 +34,12 @@
 
     .menu {
       text-align: center;
+
       ul {
         margin: 0;
         padding: 0;
         list-style: none;
+
         li {
           display: inline-block;
           margin: 0 0.5rem;
@@ -50,6 +52,7 @@
             text-decoration: none;
             font-size: 18px;
             display: block;
+            cursor: pointer;
 
             &.active,
             &:hover {
@@ -101,3 +104,30 @@
     }
   }
 }
+
+  @media (max-width: 767px) {
+    .heading {
+      position: relative;
+      bottom: 10px;
+      width: 340px;
+    }
+
+    .dots {
+      max-width: 90px;
+
+      ul {
+        position: relative ;
+        bottom: 10px;
+      }
+    }
+
+    .menu {
+      position: relative;
+        top: 10px;
+      ul {
+        
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }

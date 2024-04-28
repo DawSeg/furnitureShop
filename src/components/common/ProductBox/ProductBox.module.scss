@@ -110,3 +110,20 @@ margin-right: 4px;
   text-decoration: line-through;
   margin-left: 115px;
 }
+
+@media (max-width: 767px) {
+  .oldPrice {
+    margin-left: 210px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .oldPrice {
+    margin-left: 160px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .oldPrice {
+    margin-left: 80px;
+  }
+}
