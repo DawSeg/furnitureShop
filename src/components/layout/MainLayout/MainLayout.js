@@ -7,8 +7,8 @@ import Footer from '../Footer/Footer';
 const MainLayout = ({ children }) => (
   <div>
     <Header />
-    {children}
     <ComparisonBar />
+    {children}
     <Footer />
   </div>
 );
