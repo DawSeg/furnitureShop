@@ -202,7 +202,7 @@ const initialState = {
       newFurniture: true,
       image: './images/furnitures/bed5.jpg',
       favourite: true,
-      comparison: true,
+      comparison: false,
       oldPrice: 45,
     },
     {
@@ -252,7 +252,7 @@ const initialState = {
       newFurniture: true,
       image: './images/furnitures/bed9.jpg',
       favourite: false,
-      comparison: true,
+      comparison: false,
     },
     {
       id: 'aenean-ru-bristique-21',
@@ -264,7 +264,7 @@ const initialState = {
       newFurniture: true,
       image: './images/furnitures/bed10.jpg',
       favourite: false,
-      comparison: true,
+      comparison: false,
       oldPrice: 45,
     },
     {
@@ -301,7 +301,7 @@ const initialState = {
       newFurniture: true,
       image: './images/furnitures/bed2.jpg',
       favourite: true,
-      comparison: true,
+      comparison: false,
       oldPrice: 45,
     },
   ],
