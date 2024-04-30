@@ -73,3 +73,11 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .left {
+    .phoneNumber {
+      order: 2;
+    }
+  }
+}
