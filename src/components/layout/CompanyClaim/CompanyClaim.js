@@ -13,7 +13,7 @@ const CompanyClaim = () => {
   return (
     <div className={styles.root}>
       <div className='container'>
-        <div className={'row align-items-center'}>
+        <div className='row align-items-center '>
           <div className={`col text-left ${styles.phoneNumber}`}>
             <p>
               <FontAwesomeIcon className={styles.icon} icon={faMobileAlt} /> 2300 - 3560 -
