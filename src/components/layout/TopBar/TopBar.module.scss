@@ -32,11 +32,34 @@
     }
   }
 
-  .topMenu ul li {
-    margin-left: 1.5rem;
+  .topMenu {
+    text-align: end;
 
-    .icon {
-      margin-right: 5px;
+    ul li {
+      margin-left: 1.5rem;
+
+      .icon {
+        margin-right: 5px;
+      }
+    }
+  }
+
+
+}
+
+@media (max-width: 767px) {
+
+  .root {
+
+    .topMenu {
+
+      span {
+        font-size: 0px;
+      }
+    }
+
+    .topOptions ul li {
+      margin-right: 10px;
     }
   }
 }

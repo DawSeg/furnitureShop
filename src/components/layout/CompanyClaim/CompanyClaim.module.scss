@@ -3,8 +3,12 @@
 .root {
   background-color: $header-bg;
 
-  :global(.container) > :global(.row) {
+  :global(.container)> :global(.row) {
     height: 145px;
+  }
+
+  .logo {
+    text-align: center;
   }
 
   .phoneNumber {
@@ -26,6 +30,7 @@
   }
 
   .cart {
+    text-align: end;
     .cartBox {
       display: inline-block;
       position: relative;
@@ -43,7 +48,7 @@
 
         .icon {
           margin-right: 5px;
-          
+
         }
       }
 
@@ -70,6 +75,24 @@
           background-color: lighten($primary, 10%);
         }
       }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .root {
+    position: relative;
+    height: 200px;
+
+    .phoneNumber {
+      position: absolute;
+      bottom: 15%;
+      left: 5px;
+    }
+
+    .cart {
+      position: absolute;
+      right: 5%;
     }
   }
 }
