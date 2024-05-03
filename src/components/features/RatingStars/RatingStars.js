@@ -4,18 +4,18 @@ import { faStar }
   from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { propTypes } from 'react-bootstrap/esm/Image';
+import PropTypes from 'prop-types';
 
-const RatingStars = ({ stars }) => {
+const RatingStars = ({ stars, userRating }) => {
 
   return (
     <div className={styles.stars}>
       {[1, 2, 3, 4, 5].map(i => (
         <a key={i} href='#'>
-          {i <= stars ? (
-            <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
+          {userRating !== null && i <= userRating ? (
+            <FontAwesomeIcon icon={faStar} className={styles.userRated}>{i} stars</FontAwesomeIcon>
           ) : (
-            <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
+            <FontAwesomeIcon icon={i <= stars ? faStar : farStar}>{i} stars</FontAwesomeIcon>
           )}
         </a>
       ))}
@@ -24,7 +24,8 @@ const RatingStars = ({ stars }) => {
 };
 
 RatingStars.propTypes = {
-  stars: propTypes.number,
+  stars: PropTypes.number,
+  userRating: PropTypes.number,
 };
 
 export default RatingStars;

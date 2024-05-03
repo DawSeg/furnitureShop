@@ -10,7 +10,9 @@ import RatingStars from '../../features/RatingStars/RatingStars';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCompare, getCompared, toggleFavourite } from '../../../redux/productsRedux';
 
-const ProductBox = ({ name, id, price, promo, stars, image, favourite, comparison, oldPrice }) => {
+const ProductBox = ({ name, id, price, promo, stars, image, favourite, 
+  comparison, oldPrice, userRating }) => {
+    
   const comparisonList = useSelector(state => getCompared(state));
   const dispatch = useDispatch();
   const favouriteClickHandler = (e) => {
@@ -40,7 +42,7 @@ const ProductBox = ({ name, id, price, promo, stars, image, favourite, compariso
       </div>
       <div className={styles.content}>
         <h5>{name}</h5>
-        <RatingStars stars={stars}/>
+        <RatingStars stars={stars} userRating={userRating}/>
       </div>
       <div className={styles.line}></div>
       <div className={styles.actions}>
@@ -77,6 +79,7 @@ ProductBox.propTypes = {
   price: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
+  userRating: PropTypes.number,
   image: PropTypes.string.isRequired,
   favourite: PropTypes.bool.isRequired,
   comparison: PropTypes.bool.isRequired,

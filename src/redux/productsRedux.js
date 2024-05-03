@@ -1,7 +1,7 @@
 /* selectors */
 export const getAll = ({ products }) => products;
 export const getCount = ({ products }) => products.length;
-export const getCompared = ({products}) => products.filter(product => product.comparison);
+export const getCompared = ({ products }) => products.filter(product => product.comparison);
 export const getNew = ({ products }) =>
   products.filter(item => item.newFurniture === true);
 
@@ -10,11 +10,13 @@ const reducerName = 'product';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
+const SET_USER_RAITING = createActionName('USER_RAITNG');
 const TOGGLE_FAVOURITE = createActionName('TOGGLE_FAVOURITE');
 const ADD_TO_COMPARE = createActionName('ADD_TO_COMPARE');
 const REMOVE_COMPARE = createActionName('REMOVE_COMPARE');
 
 /* action creators */
+export const setUserRaiting = payload => ({ payload, type: SET_USER_RAITING });
 export const toggleFavourite = payload => ({ payload, type: TOGGLE_FAVOURITE });
 export const addToCompare = payload => ({ payload, type: ADD_TO_COMPARE });
 export const removeCompare = payload => ({ payload, type: REMOVE_COMPARE });
@@ -40,6 +42,13 @@ export default function reducer(statePart = [], action = {}) {
           ? { ...product, comparison: false }
           : product
       );
+    case SET_USER_RAITING: {
+      return {
+        ...statePart,
+        userRating: action.payload,
+      };
+    }
+
     default:
       return statePart;
   }
