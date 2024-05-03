@@ -10,13 +10,13 @@ const reducerName = 'product';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
-const SET_USER_RAITING = createActionName('USER_RAITNG');
+const SET_USER_RATING = createActionName('USER_RAITNG');
 const TOGGLE_FAVOURITE = createActionName('TOGGLE_FAVOURITE');
 const ADD_TO_COMPARE = createActionName('ADD_TO_COMPARE');
 const REMOVE_COMPARE = createActionName('REMOVE_COMPARE');
 
 /* action creators */
-export const setUserRaiting = payload => ({ payload, type: SET_USER_RAITING });
+export const setUserRating = payload => ({ payload, type: SET_USER_RATING });
 export const toggleFavourite = payload => ({ payload, type: TOGGLE_FAVOURITE });
 export const addToCompare = payload => ({ payload, type: ADD_TO_COMPARE });
 export const removeCompare = payload => ({ payload, type: REMOVE_COMPARE });
@@ -42,13 +42,10 @@ export default function reducer(statePart = [], action = {}) {
           ? { ...product, comparison: false }
           : product
       );
-    case SET_USER_RAITING: {
-      return {
-        ...statePart,
-        userRating: action.payload,
-      };
-    }
-
+    case SET_USER_RATING:
+      return statePart.map(product =>
+        product.id === action.payload.id ? { ...product, ...action.payload } : product
+      );
     default:
       return statePart;
   }

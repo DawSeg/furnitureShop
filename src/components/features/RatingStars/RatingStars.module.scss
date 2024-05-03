@@ -7,7 +7,12 @@
 
       &:hover {
         color: $primary;
+       
       }
+    }
+      a:hover ~ a {
+      color: $primary;
+      
     }
 
     .userRated {
