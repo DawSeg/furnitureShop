@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faExchangeAlt, faShoppingBasket }
+import { faExchangeAlt, faShoppingBasket }
   from '@fortawesome/free-solid-svg-icons';
-import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
+import RatingStars from '../../features/RatingStars/RatingStars';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCompare, getCompared, toggleFavourite } from '../../../redux/productsRedux';
 
@@ -39,17 +40,7 @@ const ProductBox = ({ name, id, price, promo, stars, image, favourite, compariso
       </div>
       <div className={styles.content}>
         <h5>{name}</h5>
-        <div className={styles.stars}>
-          {[1, 2, 3, 4, 5].map(i => (
-            <a key={i} href='#'>
-              {i <= stars ? (
-                <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
-              ) : (
-                <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
-              )}
-            </a>
-          ))}
-        </div>
+        <RatingStars stars={stars}/>
       </div>
       <div className={styles.line}></div>
       <div className={styles.actions}>
