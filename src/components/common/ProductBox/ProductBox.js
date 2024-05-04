@@ -50,12 +50,12 @@ const ProductBox = ({ name, id, price, promo, stars, image, favourite,
           <Button onClick={favouriteClickHandler} variant='outline'
             className={`${styles.outlineButton} ${favourite ? styles.active : ''}`}
           >
-            <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
+            <FontAwesomeIcon icon={faHeart} />
           </Button>
           <Button onClick={compareClickHandler} variant='outline'
             className={`${styles.outlineButton} ${comparison ? styles.active : ''}`}
           >
-            <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
+            <FontAwesomeIcon icon={faExchangeAlt} />
           </Button>
         </div>
         {oldPrice ? (

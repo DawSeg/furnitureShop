@@ -136,7 +136,7 @@ const initialState = {
       promo: 'sale',
       newFurniture: true,
       image: './images/furnitures/bed10.jpg',
-      favourite: true,
+      favourite: false,
       comparison: false,
       oldPrice: 45,
       userRating: 1,
