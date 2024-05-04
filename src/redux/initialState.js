@@ -138,7 +138,9 @@ const initialState = {
       image: './images/furnitures/bed10.jpg',
       favourite: true,
       comparison: false,
-      userRating: 0,
+      oldPrice: 45,
+      userRating: 1,
+      hotDeals: true,
     },
     {
       id: 'aenean-ru-bristique-11',
@@ -206,6 +208,7 @@ const initialState = {
       favourite: false,
       comparison: false,
       userRating: 0,
+      hotDeals: true,
     },
     {
       id: 'aenean-ru-bristique-16',
@@ -260,6 +263,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      hotDeals: true,
     },
     {
       id: 'aenean-ru-bristique-20',

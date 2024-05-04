@@ -4,6 +4,7 @@ export const getCount = ({ products }) => products.length;
 export const getCompared = ({ products }) => products.filter(product => product.comparison);
 export const getNew = ({ products }) =>
   products.filter(item => item.newFurniture === true);
+export const getHotDeals = ({products}) => products.filter(product => product.hotDeals);
 
 /* action name creator */
 const reducerName = 'product';

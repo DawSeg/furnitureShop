@@ -3,19 +3,18 @@
   .stars {
     a {
       text-decoration: none;
-      color: rgb(42, 42, 42);
+      color: $text-color;
 
       &:hover {
         color: $primary;
-       
       }
     }
-      a:hover ~ a {
+
+    a:hover ~a {
       color: $primary;
-      
     }
 
     .userRated {
-        color: $primary;
+      color: $primary;
     }
   }
