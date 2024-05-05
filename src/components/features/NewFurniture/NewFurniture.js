@@ -11,7 +11,11 @@ const NewFurniture = ({ categories, products }) => {
   const [isFading, setIsFading] = useState(true);
 
   const handlePageChange = (newPage) => {
-    setActivePage(newPage);
+    setIsFading(true);
+    setTimeout(() => {
+      setActivePage(newPage);
+      setIsFading(false);
+    }, 300);
   };
 
   const handleCategoryChange = (newCategory) => {
@@ -51,7 +55,7 @@ const NewFurniture = ({ categories, products }) => {
   };
 
   return (
-    <div className={styles.root}>
+    <div className={clsx(styles.root, isFading ? styles.fadeOut : styles.fadeIn)}>
       <div className='container'>
         <div className={styles.panelBar}>
           <div className='row ms-0 w-100 no-gutters align-items-end'>
