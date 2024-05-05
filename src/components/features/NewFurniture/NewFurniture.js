@@ -3,17 +3,23 @@ import PropTypes from 'prop-types';
 import Swipeable from '../Swipeable/Swipeable';
 import styles from './NewFurniture.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
+import clsx from 'clsx';
 
 const NewFurniture = ({ categories, products }) => {
   const [activePage, setActivePage] = useState(0);
   const [activeCategory, setActiveCategory] = useState('bed');
+  const [isFading, setIsFading] = useState(true);
 
   const handlePageChange = (newPage) => {
     setActivePage(newPage);
   };
 
   const handleCategoryChange = (newCategory) => {
-    setActiveCategory(newCategory);
+    setIsFading(true);
+    setTimeout(() => {
+      setActiveCategory(newCategory);
+      setIsFading(false);
+    }, 500);
   };
 
   const categoryProducts = products.filter(item => item.category === activeCategory);
@@ -72,7 +78,7 @@ const NewFurniture = ({ categories, products }) => {
           </div>
         </div>
         <Swipeable leftAction={handleSwipeLeft} rightAction={handleSwipeRight}>
-          <div className='row'>
+          <div className={clsx('row', isFading ? styles.fadeOut : styles.fadeIn)}>
             {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
               <div key={item.id} className='col-xl-3 col-md-6 col-sm-12'>
                 <ProductBox {...item} />
