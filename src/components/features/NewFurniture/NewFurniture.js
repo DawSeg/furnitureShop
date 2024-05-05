@@ -8,22 +8,26 @@ import clsx from 'clsx';
 const NewFurniture = ({ categories, products }) => {
   const [activePage, setActivePage] = useState(0);
   const [activeCategory, setActiveCategory] = useState('bed');
-  const [isFading, setIsFading] = useState(true);
+  const [isFading, setIsFading] = useState(false);
 
   const handlePageChange = (newPage) => {
     setIsFading(true);
     setTimeout(() => {
-      setActivePage(newPage);
-      setIsFading(false);
-    }, 300);
+      setTimeout(() => {
+        setActivePage(newPage);
+        setIsFading(false);
+      }, 500); 
+    }, 500); 
   };
 
   const handleCategoryChange = (newCategory) => {
     setIsFading(true);
     setTimeout(() => {
-      setActiveCategory(newCategory);
-      setIsFading(false);
-    }, 500);
+      setTimeout(() => {
+        setActiveCategory(newCategory);
+        setIsFading(false);
+      }, 500); 
+    }, 500); 
   };
 
   const categoryProducts = products.filter(item => item.category === activeCategory);
@@ -55,7 +59,7 @@ const NewFurniture = ({ categories, products }) => {
   };
 
   return (
-    <div className={clsx(styles.root, isFading ? styles.fadeOut : styles.fadeIn)}>
+    <div className={clsx(styles.root, !isFading ? styles.fadeIn : styles.fadeOut)}>
       <div className='container'>
         <div className={styles.panelBar}>
           <div className='row ms-0 w-100 no-gutters align-items-end'>

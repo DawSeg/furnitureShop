@@ -4,10 +4,6 @@
   height: 520px;
   margin: 0 0 30px 0;
 
-  .active {
-    color: $primary;
-  }
-
   .leftSideDeal {
     position: relative;
     padding: 0;
@@ -30,11 +26,18 @@
       }
 
       .dots {
-        color: #e1e1e1;
 
+        ul {
+          margin: 0;
+          display: flex;
+          list-style-type: none;
+        }
+        
         a {
+          cursor: pointer;
           font-size: 12px;
           margin-right: 8px;
+          color: #e1e1e1 ;
 
           &:hover {
             color: $primary;
@@ -156,7 +159,7 @@
           width: 90px;
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: end;
 
           .price {
             font-size: 16px;
@@ -164,6 +167,7 @@
           }
 
           .oldPrice {
+            margin-right: 5px;
             text-decoration: line-through;
             color: $old-price;
           }
@@ -282,4 +286,36 @@
         }
       }
     }
+  }
+
+  .active {
+    color: $primary !important;
+  }
+
+  .fadeIn {
+    animation: fadein 0.5s;
+  }
+  
+  .fadeOut {
+    animation: fadeOut 0.5s;
+  }
+  
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  
+  @-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+  }
+  
+  @-webkit-keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
   }
