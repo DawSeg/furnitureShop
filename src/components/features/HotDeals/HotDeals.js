@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './HotDeals.module.scss';
 import React, { useEffect, useState } from 'react';
-import { getHotDeals } from '../../../redux/productsRedux';
+import { addToCompare, getCompared, getHotDeals, toggleFavourite } from '../../../redux/productsRedux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faExchangeAlt, faShoppingBasket, faCircle, faChevronLeft, faChevronRight }
   from '@fortawesome/free-solid-svg-icons';
@@ -12,10 +12,25 @@ import { Container } from 'react-bootstrap';
 
 const PromotedProducts = () => {
   const hotDeals = useSelector(getHotDeals);
+  const comparisonList = useSelector(getCompared);
+  const dispatch = useDispatch();
   const [activeDealLeft, setActiveDealLeft] = useState(0);
   const [activeDealRight, setActiveDealRight] = useState(0);
   const [autoPlayLeft, setAutoPlayLeft] = useState(true);
   const [isFading, setIsFading] = useState(false);
+
+  const favouriteClickHandler = (e, id) => {
+    e.preventDefault();
+    dispatch(toggleFavourite(id));
+  };
+  const compareClickHandler = (e, id) => {
+    e.preventDefault();
+    if (comparisonList.length >= 4) {
+      alert('The maximum number of products for comparison is 4');
+    } else {
+      dispatch(addToCompare(id));
+    }
+  };
 
   const handleDealChangeLeft = (newDeal) => {
     setActiveDealLeft(newDeal);
@@ -36,14 +51,16 @@ const PromotedProducts = () => {
     };
   }, [autoPlayLeft]);
 
-  const leftArrowhandler = () => {
+  const leftArrowhandler = (e) => {
+    e.preventDefault();
     setActiveDealRight((prevPage) => (prevPage - 1 + hotDeals.length) % hotDeals.length);
     if (activeDealRight === 0) {
       setActiveDealRight(hotDeals.length - 1);
     }
   };
 
-  const rightArrowHandler = () => {
+  const rightArrowHandler = (e) => {
+    e.preventDefault();
     setActiveDealRight((prevPage) => (prevPage + 1) % hotDeals.length);
   };
 
@@ -109,12 +126,12 @@ const PromotedProducts = () => {
                       <Button variant='outline'>
                         <FontAwesomeIcon icon={faEye} />
                       </Button>
-                      <Button variant='outline'
+                      <Button onClick={(e) => favouriteClickHandler(e, product.id)} variant='outline'
                         className={`${styles.outlineButton} ${product.favourite ? styles.active : ''}`}
                       >
                         <FontAwesomeIcon icon={faHeart} />
                       </Button>
-                      <Button variant='outline'
+                      <Button onClick={(e) => compareClickHandler(e, product.id)} variant='outline'
                         className={`${styles.outlineButton} ${product.comparison ? styles.active : ''}`}
                       >
                         <FontAwesomeIcon icon={faExchangeAlt} />

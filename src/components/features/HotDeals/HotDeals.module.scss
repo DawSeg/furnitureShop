@@ -153,6 +153,14 @@
           width: 115px;
           display: flex;
           justify-content: space-between;
+          
+          .active {
+            background-color: $primary;
+            border: none;
+             svg {
+              color: #ffffff;
+            }
+          }
         }
 
         .prices {
