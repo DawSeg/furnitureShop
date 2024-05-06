@@ -9,6 +9,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import RatingStars from '../../features/RatingStars/RatingStars';
 import Button from '../../common/Button/Button';
 import { Container } from 'react-bootstrap';
+import Swipeable from '../Swipeable/Swipeable';
 
 const PromotedProducts = () => {
   const hotDeals = useSelector(getHotDeals);
@@ -63,6 +64,20 @@ const PromotedProducts = () => {
     e.preventDefault();
     setActiveDealRight((prevPage) => (prevPage + 1) % hotDeals.length);
   };
+
+
+  const handleSwipeLeft = () => {
+    if (activeDealRight > 0) {
+      setActiveDealRight(activeDealRight - 1);
+    }
+  };
+
+  const handleSwipeRight = () => {
+    if (activeDealRight < hotDeals.length - 1) {
+      setActiveDealRight(activeDealRight + 1);
+    }
+  };
+
 
   return (
     <Container>
@@ -157,27 +172,30 @@ const PromotedProducts = () => {
         </div>
 
         <div className={`${styles.rightSideDeal}`}>
-          {hotDeals.map((product, index) => (
-            index === activeDealRight && (
-              <div className={`${styles.insideBanner}`} key={index}>
-                <img src={product.image} alt={product.name}></img>
-                <div className={`${styles.imgBanner} text-center`}>
-                  <h3>
-                    Indoor <span>Furniture</span>
-                  </h3>
-                  <h4>Save up to 50% on all furniture</h4>
-                  <Button className={styles.shopNow}>SHOP NOW</Button>
+          <Swipeable leftAction={handleSwipeLeft} rightAction={handleSwipeRight}>
+            {hotDeals.map((product, index) => (
+              index === activeDealRight && (
+                <div className={`${styles.insideBanner}`} key={index}>
+                  <img src={product.image} alt={product.name}></img>
+                  <div className={`${styles.imgBanner} text-center`}>
+                    <h3>
+                      Indoor <span>Furniture</span>
+                    </h3>
+                    <h4>Save up to 50% on all furniture</h4>
+                    <Button className={styles.shopNow}>SHOP NOW</Button>
+                  </div>
+                  <Button onClick={leftArrowhandler} className={`${styles.arrLeft} col-4 text-center`}>
+                    <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
+                  </Button>
+                  <Button onClick={rightArrowHandler} className={styles.arrRight}>
+                    <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
+                  </Button>
                 </div>
-                <Button onClick={leftArrowhandler} className={`${styles.arrLeft} col-4 text-center`}>
-                  <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
-                </Button>
-                <Button onClick={rightArrowHandler} className={styles.arrRight}>
-                  <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
-                </Button>
-              </div>
-            )
-          ))}
+              )
+            ))}
+          </Swipeable>
         </div>
+
       </div>
     </Container>
   );

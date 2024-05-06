@@ -191,7 +191,7 @@
     img {
       position: relative;
       object-fit: cover;
-      height: 488px;
+      height: 520px;
       width: 100%;
     }
 
@@ -326,4 +326,20 @@
   @-webkit-keyframes fadeOut {
     from { opacity: 1; }
     to   { opacity: 0; }
+  }
+
+  @media (max-width: 932px) {
+    
+    .leftSideDeal {
+      display: none;
+    }
+
+    .rightSideDeal {
+      width: 100% !important;
+      padding: 0 !important;
+
+      .shopNow {
+        width: 110px !important;
+      }
+    }
   }
