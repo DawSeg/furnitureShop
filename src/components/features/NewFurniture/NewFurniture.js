@@ -48,13 +48,25 @@ const NewFurniture = ({ categories, products }) => {
 
   const handleSwipeLeft = () => {
     if (activePage > 0) {
-      setActivePage(activePage - 1);
+      setIsFading(true);
+      setTimeout(() => {
+        setTimeout(() => {
+          setActivePage(activePage - 1);
+          setIsFading(false);
+        }, 500); 
+      }, 500); 
     }
   };
 
   const handleSwipeRight = () => {
     if (activePage < pagesCount - 1) {
-      setActivePage(activePage + 1);
+      setIsFading(true);
+      setTimeout(() => {
+        setTimeout(() => {
+          setActivePage(activePage + 1);
+          setIsFading(false);
+        }, 500); 
+      }, 500);  
     }
   };
 
