@@ -36,16 +36,14 @@ const PromotedProducts = () => {
 
   const handleDealChangeLeft = (newDeal) => {
     setIsFading(true);
-    setActiveDealLeft(newDeal);
     setAutoPlayLeft(false);
-
     setTimeout(() => {
-      setTimeout(() => {
-        setIsFading(false);
-        setAutoPlayLeft(true);
-      }, 500);
+      setActiveDealLeft(newDeal);
+      setIsFading(false);
     }, 500);
-
+    setTimeout(() => {
+      setAutoPlayLeft(true);
+    }, 10000);
   };
 
   useEffect(() => {
@@ -61,30 +59,42 @@ const PromotedProducts = () => {
 
   const leftArrowhandler = (e) => {
     e.preventDefault();
-    setActiveDealRight((prevPage) => (prevPage - 1 + hotDeals.length) % hotDeals.length);
-    if (activeDealRight === 0) {
-      setActiveDealRight(hotDeals.length - 1);
-    }
+    setIsFading(true);
+    setTimeout(() => {
+      setActiveDealRight((prevPage) => (prevPage - 1 + hotDeals.length) % hotDeals.length);
+      setIsFading(false);
+    }, 500);
   };
-
+  
   const rightArrowHandler = (e) => {
     e.preventDefault();
-    setActiveDealRight((prevPage) => (prevPage + 1) % hotDeals.length);
+    setIsFading(true);
+    setTimeout(() => {
+      setActiveDealRight((prevPage) => (prevPage + 1) % hotDeals.length);
+      setIsFading(false);
+    }, 500);
   };
 
 
   const handleSwipeLeft = () => {
-    if (activeDealRight > 0) {
-      setActiveDealRight(activeDealRight - 1);
-    }
+    setIsFading(true);
+    setTimeout(() => {
+      if (activeDealRight > 0) {
+        setActiveDealRight(activeDealRight - 1);
+      }
+      setIsFading(false);
+    }, 500);
   };
 
   const handleSwipeRight = () => {
-    if (activeDealRight < hotDeals.length - 1) {
-      setActiveDealRight(activeDealRight + 1);
-    }
+    setIsFading(true);
+    setTimeout(() => {
+      if (activeDealRight < hotDeals.length - 1) {
+        setActiveDealRight(activeDealRight + 1);
+      }
+      setIsFading(false);
+    }, 500);
   };
-
 
   return (
     <Container>
@@ -97,7 +107,7 @@ const PromotedProducts = () => {
                 {hotDeals.map((product, index) => (
                   <li key={index}>
                     <a
-                      onClick={() => handleDealChangeLeft(index)}
+                      onClick={(e) => {e.preventDefault(); handleDealChangeLeft(index);}}
                       className={index === activeDealLeft ? styles.active : ''}
                     >
                       <FontAwesomeIcon icon={faCircle} />
@@ -182,7 +192,7 @@ const PromotedProducts = () => {
           <Swipeable leftAction={handleSwipeLeft} rightAction={handleSwipeRight}>
             {hotDeals.map((product, index) => (
               index === activeDealRight && (
-                <div className={`${styles.insideBanner}`} key={index}>
+                <div className={clsx(styles.insideBanner, isFading ? styles.fadeOut : styles.fadeIn)} key={index}>
                   <img src={product.image} alt={product.name}></img>
                   <div className={`${styles.imgBanner} text-center`}>
                     <h3>

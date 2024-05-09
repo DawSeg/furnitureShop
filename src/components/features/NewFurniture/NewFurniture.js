@@ -13,21 +13,17 @@ const NewFurniture = ({ categories, products }) => {
   const handlePageChange = (newPage) => {
     setIsFading(true);
     setTimeout(() => {
-      setTimeout(() => {
-        setActivePage(newPage);
-        setIsFading(false);
-      }, 500); 
-    }, 500); 
+      setActivePage(newPage);
+      setIsFading(false);
+    }, 500);
   };
 
   const handleCategoryChange = (newCategory) => {
     setIsFading(true);
     setTimeout(() => {
-      setTimeout(() => {
-        setActiveCategory(newCategory);
-        setIsFading(false);
-      }, 500); 
-    }, 500); 
+      setActiveCategory(newCategory);
+      setIsFading(false);
+    }, 500);
   };
 
   const categoryProducts = products.filter(item => item.category === activeCategory);
@@ -37,7 +33,7 @@ const NewFurniture = ({ categories, products }) => {
     dots.push(
       <li key={i}>
         <a
-          onClick={() => handlePageChange(i)}
+          onClick={(e) => {e.preventDefault(); handlePageChange(i);}}
           className={i === activePage ? styles.active : ''}
         >
           page {i}
@@ -50,11 +46,9 @@ const NewFurniture = ({ categories, products }) => {
     if (activePage > 0) {
       setIsFading(true);
       setTimeout(() => {
-        setTimeout(() => {
-          setActivePage(activePage - 1);
-          setIsFading(false);
-        }, 500); 
-      }, 500); 
+        setActivePage(activePage - 1);
+        setIsFading(false);
+      }, 500);
     }
   };
 
@@ -62,11 +56,9 @@ const NewFurniture = ({ categories, products }) => {
     if (activePage < pagesCount - 1) {
       setIsFading(true);
       setTimeout(() => {
-        setTimeout(() => {
-          setActivePage(activePage + 1);
-          setIsFading(false);
-        }, 500); 
-      }, 500);  
+        setActivePage(activePage + 1);
+        setIsFading(false);
+      }, 500);
     }
   };
 
@@ -84,7 +76,7 @@ const NewFurniture = ({ categories, products }) => {
                   <li key={item.id}>
                     <a
                       className={item.id === activeCategory ? styles.active : ''}
-                      onClick={() => handleCategoryChange(item.id)}
+                      onClick={(e) => { e.preventDefault(); handleCategoryChange(item.id); }}
                     >
                       {item.name}
                     </a>
