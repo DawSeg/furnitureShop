@@ -1,19 +1,23 @@
   @import '../../../styles/settings.scss';
 
   .stars {
+  
     a {
       text-decoration: none;
-      color: $text-color;
-
-      &:hover {
+      color: black;
+    }
+    
+    &:has(a:hover) {
+      a {
         color: $primary;
       }
+      
+      a:hover ~ a {
+        color: black;
+      }
+      
     }
-
-    a:hover ~a {
-      color: $primary;
-    }
-
+  
     .userRated {
       color: $primary;
     }

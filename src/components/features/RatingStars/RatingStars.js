@@ -9,22 +9,35 @@ import { setUserRating } from '../../../redux/productsRedux';
 
 const RatingStars = ({ stars, userRating, id }) => {
   const [rating, setRating] = useState(userRating || stars);
+  const [hoveredStar, setHoveredStar] = useState();
   const dispatch = useDispatch();
 
   const handleRating = (rating) => {
     rating === 0 ? setRating(stars) : setRating(rating);
     dispatch(setUserRating({ userRating: rating, id }));
+    
+  };
+
+  const handleStarHover = (i) => {
+    if (userRating === null || i > userRating) {
+      setHoveredStar(i);
+    }
+  };
+
+  const handleStarLeave = () => {
+    setHoveredStar(null);
   };
 
   return (
     <div className={styles.stars}>
       {[1, 2, 3, 4, 5].map(i => (
         <a key={i} href='#' onClick={(e) => { e.preventDefault(); handleRating(i); }}>
-          {userRating !== null && i <= userRating ? (
-            <FontAwesomeIcon icon={faStar} className={styles.userRated}>{i} stars</FontAwesomeIcon>
-          ) : (
-            <FontAwesomeIcon icon={i <= stars ? faStar : farStar}>{i} stars</FontAwesomeIcon>
-          )}
+          <FontAwesomeIcon
+            icon={i <= (hoveredStar || userRating || stars) ? faStar : farStar}
+            className={`${styles.star} ${userRating !== null && i <= userRating ? styles.userRated : ''}`}
+            onMouseEnter={() => handleStarHover(i)}
+            onMouseLeave={handleStarLeave}
+          />
         </a>
       ))}
     </div>

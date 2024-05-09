@@ -10,6 +10,7 @@ import RatingStars from '../../features/RatingStars/RatingStars';
 import Button from '../../common/Button/Button';
 import { Container } from 'react-bootstrap';
 import Swipeable from '../Swipeable/Swipeable';
+import clsx from 'clsx';
 
 const PromotedProducts = () => {
   const hotDeals = useSelector(getHotDeals);
@@ -34,11 +35,17 @@ const PromotedProducts = () => {
   };
 
   const handleDealChangeLeft = (newDeal) => {
+    setIsFading(true);
     setActiveDealLeft(newDeal);
     setAutoPlayLeft(false);
+
     setTimeout(() => {
-      setAutoPlayLeft(true);
-    }, 10000);
+      setTimeout(() => {
+        setIsFading(false);
+        setAutoPlayLeft(true);
+      }, 500);
+    }, 500);
+
   };
 
   useEffect(() => {
@@ -102,7 +109,7 @@ const PromotedProducts = () => {
           </div>
           {hotDeals.map((product, index) => (
             index === activeDealLeft && (
-              <div key={index} className={styles.hotDealBox}>
+              <div key={index} className={clsx(styles.hotDealBox, !isFading ? styles.fadeIn : styles.fadeOut)}>
                 <img src={product.image} alt={product.name} />
                 <div className={styles.hotDealmid}>
                   <Button className={styles.cartButton} variant='small'>
