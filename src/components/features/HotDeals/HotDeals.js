@@ -19,7 +19,8 @@ const PromotedProducts = () => {
   const [activeDealLeft, setActiveDealLeft] = useState(0);
   const [activeDealRight, setActiveDealRight] = useState(0);
   const [autoPlayLeft, setAutoPlayLeft] = useState(true);
-  const [isFading, setIsFading] = useState(false);
+  const [isFadingLeft, setIsFadingLeft] = useState(false);
+  const [isFadingRight, setIsFadingRight] = useState(false);
 
   const favouriteClickHandler = (e, id) => {
     e.preventDefault();
@@ -35,11 +36,11 @@ const PromotedProducts = () => {
   };
 
   const handleDealChangeLeft = (newDeal) => {
-    setIsFading(true);
+    setIsFadingLeft(true);
     setAutoPlayLeft(false);
     setTimeout(() => {
       setActiveDealLeft(newDeal);
-      setIsFading(false);
+      setIsFadingLeft(false);
     }, 500);
     setTimeout(() => {
       setAutoPlayLeft(true);
@@ -49,7 +50,12 @@ const PromotedProducts = () => {
   useEffect(() => {
     const dealIntervalLeft = setInterval(() => {
       if (autoPlayLeft) {
-        setActiveDealLeft((prevPage) => (prevPage + 1) % hotDeals.length);
+        setIsFadingLeft(true);
+        setTimeout(() => {
+          setActiveDealLeft((prevPage) => (prevPage + 1) % hotDeals.length);
+          setIsFadingLeft(false);
+        }, 500);
+        
       }
     }, 3000);
     return () => {
@@ -59,40 +65,40 @@ const PromotedProducts = () => {
 
   const leftArrowhandler = (e) => {
     e.preventDefault();
-    setIsFading(true);
+    setIsFadingRight(true);
     setTimeout(() => {
       setActiveDealRight((prevPage) => (prevPage - 1 + hotDeals.length) % hotDeals.length);
-      setIsFading(false);
+      setIsFadingRight(false);
     }, 500);
   };
-  
+
   const rightArrowHandler = (e) => {
     e.preventDefault();
-    setIsFading(true);
+    setIsFadingRight(true);
     setTimeout(() => {
       setActiveDealRight((prevPage) => (prevPage + 1) % hotDeals.length);
-      setIsFading(false);
+      setIsFadingRight(false);
     }, 500);
   };
 
 
   const handleSwipeLeft = () => {
-    setIsFading(true);
+    setIsFadingRight(true);
     setTimeout(() => {
       if (activeDealRight > 0) {
         setActiveDealRight(activeDealRight - 1);
       }
-      setIsFading(false);
+      setIsFadingRight(false);
     }, 500);
   };
 
   const handleSwipeRight = () => {
-    setIsFading(true);
+    setIsFadingRight(true);
     setTimeout(() => {
       if (activeDealRight < hotDeals.length - 1) {
         setActiveDealRight(activeDealRight + 1);
       }
-      setIsFading(false);
+      setIsFadingRight(false);
     }, 500);
   };
 
@@ -107,7 +113,7 @@ const PromotedProducts = () => {
                 {hotDeals.map((product, index) => (
                   <li key={index}>
                     <a
-                      onClick={(e) => {e.preventDefault(); handleDealChangeLeft(index);}}
+                      onClick={(e) => { e.preventDefault(); handleDealChangeLeft(index); }}
                       className={index === activeDealLeft ? styles.active : ''}
                     >
                       <FontAwesomeIcon icon={faCircle} />
@@ -119,7 +125,7 @@ const PromotedProducts = () => {
           </div>
           {hotDeals.map((product, index) => (
             index === activeDealLeft && (
-              <div key={index} className={clsx(styles.hotDealBox, !isFading ? styles.fadeIn : styles.fadeOut)}>
+              <div key={index} className={clsx(styles.hotDealBox, !isFadingLeft ? styles.fadeIn : styles.fadeOut)}>
                 <img src={product.image} alt={product.name} />
                 <div className={styles.hotDealmid}>
                   <Button className={styles.cartButton} variant='small'>
@@ -192,7 +198,7 @@ const PromotedProducts = () => {
           <Swipeable leftAction={handleSwipeLeft} rightAction={handleSwipeRight}>
             {hotDeals.map((product, index) => (
               index === activeDealRight && (
-                <div className={clsx(styles.insideBanner, isFading ? styles.fadeOut : styles.fadeIn)} key={index}>
+                <div className={clsx(styles.insideBanner, isFadingRight ? styles.fadeOut : styles.fadeIn)} key={index}>
                   <img src={product.image} alt={product.name}></img>
                   <div className={`${styles.imgBanner} text-center`}>
                     <h3>
