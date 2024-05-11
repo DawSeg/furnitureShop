@@ -22,6 +22,7 @@ const NewFurniture = ({ categories, products }) => {
     setIsFading(true);
     setTimeout(() => {
       setActiveCategory(newCategory);
+      setActivePage(0);
       setIsFading(false);
     }, 500);
   };
