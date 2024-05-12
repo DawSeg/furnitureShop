@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './HotDeals.module.scss';
 import React, { useEffect, useState } from 'react';
-import { addToCompare, getCompared, getHotDeals, toggleFavourite } from '../../../redux/productsRedux';
+import { addToCompare, getCompared, getHotDeals, getHotDealsCategory, toggleFavourite } from '../../../redux/productsRedux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faExchangeAlt, faShoppingBasket, faCircle, faChevronLeft, faChevronRight }
   from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +14,7 @@ import clsx from 'clsx';
 
 const PromotedProducts = () => {
   const hotDeals = useSelector(getHotDeals);
+  const HotDealsCategory = useSelector(getHotDealsCategory);
   const comparisonList = useSelector(getCompared);
   const dispatch = useDispatch();
   const [activeDealLeft, setActiveDealLeft] = useState(0);
@@ -55,7 +56,7 @@ const PromotedProducts = () => {
           setActiveDealLeft((prevPage) => (prevPage + 1) % hotDeals.length);
           setIsFadingLeft(false);
         }, 500);
-        
+
       }
     }, 3000);
     return () => {
@@ -196,10 +197,10 @@ const PromotedProducts = () => {
 
         <div className={`${styles.rightSideDeal}`}>
           <Swipeable leftAction={handleSwipeLeft} rightAction={handleSwipeRight}>
-            {hotDeals.map((product, index) => (
+            {HotDealsCategory.map((product, index) => (
               index === activeDealRight && (
                 <div className={clsx(styles.insideBanner, isFadingRight ? styles.fadeOut : styles.fadeIn)} key={index}>
-                  <img src={product.image} alt={product.name}></img>
+                  <img src={product} alt={product}></img>
                   <div className={`${styles.imgBanner} text-center`}>
                     <h3>
                       Indoor <span>Furniture</span>
