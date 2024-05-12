@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import { getAll } from '../../../redux/productsRedux';
 
 const Sales = () => {
-
   const products = useSelector(getAll);
 
   return (
