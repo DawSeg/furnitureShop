@@ -151,8 +151,19 @@
   }
 }
 
-@media (max-width: 1024)  {
+@media (max-width: 1024px) {
   .sales {
-    
+    display: flex;
+    flex-direction: column;
+  }
+
+  .leftSide,
+  .rightSide {
+    width: 100%; 
+    margin-left: 0; 
+  }
+
+  .rightSide {
+    margin-top: 20px; 
   }
 }
