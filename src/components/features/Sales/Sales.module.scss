@@ -154,23 +154,21 @@
 
 @media (max-width: 1024px) {
   .sales {
-    display: flex;
-    flex-direction: column;
-  }
+    display: inline;
 
-  .sales .leftSide {
-    width: 100%;
-    margin-left: 0;
+    .leftSide {
+      width: 100%;
+      margin-left: 0;
+    }
 
-  }
+    .rightSide {
+      margin-left: 0;
+      width: 100%;
+      margin-top: 20px;
 
-  .sales .rightSide {
-    margin-left: 0;
-    width: 100%;
-    margin-top: 20px;
-
-    img {
-      scale: 0.8;
+      img {
+        scale: 0.8;
+      }
     }
   }
 }
