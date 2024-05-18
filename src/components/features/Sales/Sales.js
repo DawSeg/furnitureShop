@@ -26,7 +26,7 @@ const Sales = () => {
               <h3>
                 <span className={styles.bold}>office </span>
                 chair
-                <span className={styles.letterSpacing}> collection</span>
+                <br /><span className={styles.letterSpacing}> collection</span>
                 <p>$ {products[28].price}</p>
               </h3>
             </div>
