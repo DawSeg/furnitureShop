@@ -1,1 +1,18 @@
 @import '../../../styles/settings.scss';
+
+.gallery {
+  // Twoje inne style...
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #000; // Kolor przycisków nawigacji
+  }
+
+  .swiper-pagination-bullet {
+    background-color: #000; // Kolor paginacji
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #ff0000; // Kolor aktywnej paginacji
+  }
+}

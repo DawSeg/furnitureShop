@@ -36,7 +36,7 @@ const ProductBox = ({ name, id, price, promo, stars, image, favourite,
         <div className={styles.buttons}>
           <Button variant='small'>Quick View</Button>
           <Button variant='small'>
-            <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon>ADD TO CART
+            <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
           </Button>
         </div>
       </div>
