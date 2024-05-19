@@ -1,7 +1,8 @@
 import { Container } from 'react-bootstrap';
 import styles from './Gallery.module.scss';
-import React from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import Button from '../../common/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
@@ -10,10 +11,14 @@ import { faExchangeAlt, faEye, faShoppingBasket, faChevronLeft, faChevronRight }
 import RatingStars from '../RatingStars/RatingStars';
 import { useSelector } from 'react-redux';
 import { getAll } from '../../../redux/productsRedux';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
 
 const Gallery = () => {
   const products = useSelector(getAll);
-
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <Container>
       <div className={styles.gallery}>
@@ -28,7 +33,6 @@ const Gallery = () => {
             <a>top rated </a>
           </div>
           <div className={styles.productBox}>
-            <img src={products[0].image}></img>
             <div className={styles.ations}>
               <Button variant='outline'  >
                 <FontAwesomeIcon icon={faHeart} />
@@ -52,7 +56,39 @@ const Gallery = () => {
             </div>
           </div>
           <div className={styles.slider}>
-            
+            <Swiper
+              style={{
+                '--swiper-navigation-color': '#fff',
+                '--swiper-pagination-color': '#fff',
+              }}
+              spaceBetween={10}
+              navigation={true}
+              thumbs={{ swiper: thumbsSwiper }}
+              modules={[FreeMode, Navigation, Thumbs]}
+              className="mySwiper2"
+            >
+              {products.map((product, index) => (
+                <SwiperSlide key={index}>
+                  <img src={product.image} alt={product.name} style={{ width: '100%' }} />
+                </SwiperSlide>
+              ))}
+
+            </Swiper>
+            <Swiper
+              onSwiper={setThumbsSwiper}
+              spaceBetween={10}
+              slidesPerView={4}
+              freeMode={true}
+              watchSlidesProgress={true}
+              modules={[FreeMode, Navigation, Thumbs]}
+              className="mySwiper"
+            >
+              {products.map((product, index) => (
+                <SwiperSlide key={index}>
+                  <img src={product.image} alt={product.name} style={{ width: '100%' }} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
         <div className={styles.rightSide}>
