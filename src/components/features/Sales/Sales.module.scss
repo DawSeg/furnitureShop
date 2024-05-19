@@ -20,10 +20,10 @@
       display: flex;
       flex-direction: column;
       justify-content: end;
-      height: 90%;
+      height: 88%;
       width: 90%;
       position: absolute;
-      top: 5%;
+      top: 6%;
       left: 5%;
       background-color: rgba(94, 94, 94, 0.8);
       color: $alt-text-color;
@@ -71,7 +71,6 @@
         h3 {
           font-size: 30px;
           position: relative;
-          left: -20px;
           text-transform: uppercase;
           font-weight: 400;
 
@@ -97,14 +96,15 @@
       .productLeft {
         height: 215px;
         position: relative;
-        left: -4%;
+        left: -5%;
         width: auto;
         object-fit: cover;
       }
 
       .productRight {
         position: relative;
-        right: -1%;
+        right: -2%;
+        top: -2%;
         height: 225px;
         width: auto;
         object-fit: cover;
@@ -122,8 +122,9 @@
 
       img {
         position: relative;
-        height: 210px;
-        left: -5%;
+        height: 230px;
+        left: -7%;
+        top: -3%;
       }
 
       .bottomDescription {
@@ -152,55 +153,64 @@
   }
 }
 
-@media (max-width: 768px) {
-  .sales .rightSide {
-    .topSection {
-      text-align: center;
-      justify-content: center;
+@media (max-width: 460px) {
 
-      .topDescription h3 {
-        left: auto;
-      }
+  .sales {
+    display: inline;
 
-      img {
-        display: none;
-      }
+    .leftSide {
+      width: 100%;
     }
 
-    .bottomSection .bottomDescription {
-      margin: auto;
-      align-items: center;
-    }
+    .rightSide {
+      margin: 30px 0 40px 0px;
+      width: 100%;
 
-    img {
-      display: none;
-    }
-  }
-
-  @media (min-width: 769px) and (max-width: 1180px) {
-    .sales {
-      display: inline;
-
-      .leftSide {
-        width: 100%;
-        margin-left: 0;
-      }
-
-      .rightSide {
-        margin-left: 0;
-        width: 100%;
-        margin-top: 20px;
-        justify-content: space-around;
-
-        .topSection {
-          justify-content: space-around;
-          .productRight {
-            display: none;
-          }
+      .topSection {
+        .topDescription {
+          margin-left: 25px;
         }
 
-        .bottomSection {
-          justify-content: space-around;
+        .productLeft {
+          display: none;
+        }
+      }
+
+      .bottomSection {
+        justify-content: end;
+
+        img {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 461px) and (max-width: 932px) {
+  .sales {
+    display: inline;
+
+    .leftSide {
+      width: 100%;
+    }
+
+    .rightSide {
+      margin: 30px 0 40px 0px;
+      width: 100%;
+
+      .topSection {
+        .topDescription {
+          margin-left: 25px;
+        }
+      }
+
+      .bottomSection {
+        justify-content: end;
+
+        .bottomDescription {
+          justify-content: end;
+          align-items: end;
         }
       }
     }
