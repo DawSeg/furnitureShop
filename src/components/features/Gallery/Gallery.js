@@ -19,6 +19,7 @@ import 'swiper/css/thumbs';
 const Gallery = () => {
   const products = useSelector(getAll);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
   return (
     <Container>
       <div className={styles.gallery}>
@@ -61,11 +62,12 @@ const Gallery = () => {
                 '--swiper-navigation-color': '#fff',
                 '--swiper-pagination-color': '#fff',
               }}
+              loop={true}
               spaceBetween={10}
               navigation={true}
               thumbs={{ swiper: thumbsSwiper }}
               modules={[FreeMode, Navigation, Thumbs]}
-              className="mySwiper2"
+              className={styles.swiper}
             >
               {products.map((product, index) => (
                 <SwiperSlide key={index}>
@@ -76,12 +78,13 @@ const Gallery = () => {
             </Swiper>
             <Swiper
               onSwiper={setThumbsSwiper}
+              loop={true}
               spaceBetween={10}
-              slidesPerView={4}
+              slidesPerView={8}
               freeMode={true}
               watchSlidesProgress={true}
               modules={[FreeMode, Navigation, Thumbs]}
-              className="mySwiper"
+              className={styles.swiper2}
             >
               {products.map((product, index) => (
                 <SwiperSlide key={index}>
@@ -92,12 +95,14 @@ const Gallery = () => {
           </div>
         </div>
         <div className={styles.rightSide}>
-          <img src={products[1].image}></img>
-          <p className={styles.price}>from
-            <span>{products[0].price}</span>
-          </p>
-          <p>bedroom bed</p>
-          <Button className={styles.shopNow}>shop now</Button>
+          <div className={styles.description}>
+            <p className={styles.price}>FROM
+              <span> ${products[0].price}</span>
+            </p>
+            <p className={styles.title}>Bedroom Bed</p>
+            <Button className={styles.shopNow}>shop now</Button>
+          </div>
+          <img src={products[29].image} alt={products[29].name}></img>
         </div>
       </div>
     </Container>
