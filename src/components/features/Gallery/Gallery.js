@@ -33,29 +33,7 @@ const Gallery = () => {
             <a>sale off </a>
             <a>top rated </a>
           </div>
-          <div className={styles.productBox}>
-            <div className={styles.ations}>
-              <Button variant='outline'  >
-                <FontAwesomeIcon icon={faHeart} />
-              </Button>
-              <Button variant='outline'  >
-                <FontAwesomeIcon icon={faExchangeAlt} />
-              </Button>
-              <Button variant='outline'  >
-                <FontAwesomeIcon icon={faEye} />
-              </Button>
-              <Button variant='outline'  >
-                <FontAwesomeIcon icon={faShoppingBasket} />
-              </Button>
-            </div>
-            <div className={styles.rating}>
-              <RatingStars />
-            </div>
-            <div className={styles.prices}>
-              <p>{products[7].price}</p>
-              <p>{products[7].oldPrice}</p>
-            </div>
-          </div>
+
           <div className={styles.slider}>
             <Swiper
               style={{
@@ -68,7 +46,31 @@ const Gallery = () => {
               thumbs={{ swiper: thumbsSwiper }}
               modules={[FreeMode, Navigation, Thumbs]}
               className={styles.swiper}
+
             >
+              <div className={styles.productBox}>
+                <div className={styles.ations}>
+                  <Button variant='outline'  >
+                    <FontAwesomeIcon icon={faHeart} />
+                  </Button>
+                  <Button variant='outline'  >
+                    <FontAwesomeIcon icon={faExchangeAlt} />
+                  </Button>
+                  <Button variant='outline'  >
+                    <FontAwesomeIcon icon={faEye} />
+                  </Button>
+                  <Button variant='outline'  >
+                    <FontAwesomeIcon icon={faShoppingBasket} />
+                  </Button>
+                </div>
+                <div className={styles.rating}>
+                  <RatingStars />
+                </div>
+                <div className={styles.prices}>
+                  <p>{products[7].price}</p>
+                  <p>{products[7].oldPrice}</p>
+                </div>
+              </div>
               {products.map((product, index) => (
                 <SwiperSlide key={index}>
                   <img src={product.image} alt={product.name} style={{ width: '100%' }} />
