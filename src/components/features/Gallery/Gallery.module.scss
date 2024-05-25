@@ -1,11 +1,12 @@
 @import '../../../styles/settings.scss';
 
 .gallery {
-  height: 550px;
+  height: 600px;
   display: flex;
+  margin: 30px 0 60px 0;
 
   .rightSide {
-    width: 47%;
+    width: 43%;
     background-color: $blue;
     margin-left: 30px;
 
@@ -18,7 +19,7 @@
 
     img {
       position: relative;
-      height: 300px;
+      height: 320px;
       width: auto;
       left: 270px;
       bottom: 30px;
@@ -33,7 +34,7 @@
       border-radius: 5px;
       text-transform: uppercase;
       font-weight: 600;
-      margin-top: 20px;
+      margin-top: 30px;
     }
 
     p {
@@ -44,7 +45,7 @@
 
         span {
           color: $green;
-          font-size: 40px;
+          font-size: 45px;
           font-weight: 700;
         }
       }
@@ -58,7 +59,7 @@
   }
 
   .leftSide {
-    width: 53%;
+    width: 56%;
 
     h3 {
       position: relative;
@@ -66,7 +67,7 @@
       text-transform: uppercase;
       font-size: 21px;
       border-bottom: 4px solid $super-light-gray;
-      padding-bottom: 5px;
+      padding-bottom: 7px;
 
       &::before {
         content: "";
@@ -78,8 +79,65 @@
       }
     }
 
-    .swiper {
-      height: 450px;
+    .navigation {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      text-transform: uppercase;
+
+      a {
+        display: flex;
+        width: 25%;
+        color: $text-color;
+        font-size: 18px;
+        font-weight: 600;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+
+        &:hover,
+        &.active {
+          color: $primary;
+          background-color: $pink;
+          border-top: 3px solid $primary;
+        }
+
+      }
+    }
+
+    .slider {
+
+      .productBox {
+
+        .swiper {
+          height: 413px;
+       
+          .slide {
+            position: relative;
+
+            img {
+              height: 407px;
+              object-fit: cover;
+              width: auto;
+            }
+
+            .actions {
+              display: flex;
+              flex-direction: column;
+              position: absolute;
+              top: 50%;
+            }
+
+            .rating{
+              position: absolute;
+            }
+
+            .prices {
+              position: absolute;
+            }
+          }
+        }
+      }
     }
   }
 

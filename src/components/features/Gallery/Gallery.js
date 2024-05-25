@@ -28,72 +28,70 @@ const Gallery = () => {
             <h3>furniture gallery</h3>
           </div>
           <div className={styles.navigation}>
-            <a>featured </a>
-            <a>top seller </a>
-            <a>sale off </a>
-            <a>top rated </a>
+            <a href='' className={styles.active}>featured </a>
+            <a href=''>top seller </a>
+            <a href=''>sale off </a>
+            <a href=''>top rated </a>
           </div>
 
           <div className={styles.slider}>
-            <Swiper
-              style={{
-                '--swiper-navigation-color': '#fff',
-                '--swiper-pagination-color': '#fff',
-              }}
-              loop={true}
-              spaceBetween={10}
-              navigation={true}
-              thumbs={{ swiper: thumbsSwiper }}
-              modules={[FreeMode, Navigation, Thumbs]}
-              className={styles.swiper}
-
-            >
-              <div className={styles.productBox}>
-                <div className={styles.ations}>
-                  <Button variant='outline'  >
-                    <FontAwesomeIcon icon={faHeart} />
-                  </Button>
-                  <Button variant='outline'  >
-                    <FontAwesomeIcon icon={faExchangeAlt} />
-                  </Button>
-                  <Button variant='outline'  >
-                    <FontAwesomeIcon icon={faEye} />
-                  </Button>
-                  <Button variant='outline'  >
-                    <FontAwesomeIcon icon={faShoppingBasket} />
-                  </Button>
-                </div>
-                <div className={styles.rating}>
-                  <RatingStars />
-                </div>
-                <div className={styles.prices}>
-                  <p>{products[7].price}</p>
-                  <p>{products[7].oldPrice}</p>
-                </div>
-              </div>
-              {products.map((product, index) => (
-                <SwiperSlide key={index}>
-                  <img src={product.image} alt={product.name} style={{ width: '100%' }} />
-                </SwiperSlide>
-              ))}
-
-            </Swiper>
-            <Swiper
-              onSwiper={setThumbsSwiper}
-              loop={true}
-              spaceBetween={10}
-              slidesPerView={8}
-              freeMode={true}
-              watchSlidesProgress={true}
-              modules={[FreeMode, Navigation, Thumbs]}
-              className={styles.swiper2}
-            >
-              {products.map((product, index) => (
-                <SwiperSlide key={index}>
-                  <img src={product.image} alt={product.name} style={{ width: '100%' }} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            <div className={styles.productBox}>
+              <Swiper
+                style={{
+                  '--swiper-navigation-color': '#fff',
+                  '--swiper-pagination-color': '#fff',
+                }}
+                loop={true}
+                spaceBetween={10}
+                navigation={true}
+                thumbs={{ swiper: thumbsSwiper }}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className={styles.swiper}
+              >
+                {products.map((product, index) => (
+                  <SwiperSlide className={styles.slide} key={index}>
+                    <div className={styles.actions}>
+                      <Button variant='outline'  >
+                        <FontAwesomeIcon icon={faHeart} />
+                      </Button>
+                      <Button variant='outline'  >
+                        <FontAwesomeIcon icon={faExchangeAlt} />
+                      </Button>
+                      <Button variant='outline'  >
+                        <FontAwesomeIcon icon={faEye} />
+                      </Button>
+                      <Button variant='outline'  >
+                        <FontAwesomeIcon icon={faShoppingBasket} />
+                      </Button>
+                    </div>
+                    <div className={styles.rating}>
+                      <RatingStars stars={product.stars}/>
+                    </div>
+                    <div className={styles.prices}>
+                      <p>{product.price}</p>
+                      <p>{product.oldPrice}</p>
+                    </div>
+                    <img src={product.image} alt={product.name} style={{ width: '100%' }} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                loop={true}
+                spaceBetween={10}
+                slidesPerView={8}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className={styles.swiper2}
+              >
+                {products.map((product, index) => (
+                  <SwiperSlide key={index}>
+                    <img src={product.image} alt={product.name} style={{ width: '100%' }} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
         </div>
         <div className={styles.rightSide}>
