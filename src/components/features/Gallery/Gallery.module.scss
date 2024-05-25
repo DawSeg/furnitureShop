@@ -12,31 +12,36 @@
     .description {
       display: flex;
       flex-direction: column;
+      margin-left: 60px;
+      margin-top: 70px;
     }
 
     img {
-
+      position: relative;
       height: 300px;
       width: auto;
-      bottom: 10%;
-      right: 10%;
+      left: 270px;
+      bottom: 30px;
     }
 
     .shopNow {
-
-      top: 30%;
-      left: 10%;
+      width: 150px;
       color: $alt-text-color;
       background-color: $green;
-      padding: 20px 35px;
+      padding: 15px;
+      text-align: center;
       border-radius: 5px;
       text-transform: uppercase;
       font-weight: 600;
+      margin-top: 20px;
     }
 
     p {
+      line-height: 30px;
 
       &.price {
+        font-weight: 700;
+
         span {
           color: $green;
           font-size: 40px;
@@ -47,6 +52,7 @@
       &.title {
         color: $primary;
         font-size: 50px;
+        font-weight: 700;
       }
     }
   }
