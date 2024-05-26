@@ -23,7 +23,7 @@
   font-size: 13px;
   line-height: 24px;
   padding: 5px 10px;
-  font-weight: 400;
+  font-weight: 00;
 }
 
 .outline {
@@ -33,6 +33,7 @@
   color: #2a2a2a;
   font-size: 13px;
   line-height: 22px;
+  background-color: $white;
 
   &:not(.noHover):hover {
     background-color: $primary;

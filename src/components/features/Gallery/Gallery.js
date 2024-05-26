@@ -1,4 +1,4 @@
-import { Container } from 'react-bootstrap';
+import { Container, Overlay, Tooltip } from 'react-bootstrap';
 import styles from './Gallery.module.scss';
 import React, { useState } from 'react';
 import Button from '../../common/Button/Button';
@@ -62,28 +62,31 @@ const Gallery = () => {
                     <FontAwesomeIcon icon={faShoppingBasket} />
                   </Button>
                 </div>
-                <div className={styles.rating}>
-                  <RatingStars stars={products[activeIndex].stars} />
-                </div>
                 <div className={styles.prices}>
-                  <p>{products[activeIndex].price}</p>
-                  <p>{products[activeIndex].oldPrice}</p>
+                  <p>${products[activeIndex].price}</p>
+                  {products[activeIndex].oldPrice && (
+                    <p className={styles.oldPrice}>${products[activeIndex].oldPrice}</p>
+                  )}
+                </div>
+                <div className={styles.rating}>
+                  <p>{products[activeIndex].name}</p>
+                  <RatingStars stars={products[activeIndex].stars} />
                 </div>
               </div>
               <div className={styles.thumbnails}>
-                <button onClick={handlePrevThumbnails} className={styles.navButton}>
+                <button onClick={handlePrevThumbnails} className={styles.navButtonLeft}>
                   <FontAwesomeIcon icon={faChevronLeft} />
                 </button>
                 {products.slice(startIndex, startIndex + 7).map((product, index) => (
                   <img
-                    key={index}
+                    key={startIndex + index}
                     src={product.image}
                     alt={product.name}
-                    onClick={() => handleThumbnailClick( index)}
-                    className={index === activeIndex ? styles.activeThumbnail : ''}
+                    onClick={() => handleThumbnailClick(startIndex + index)}
+                    className={startIndex + index === activeIndex ? styles.activeThumbnail : ''}
                   />
                 ))}
-                <button onClick={handleNextThumbnails} className={styles.navButton}>
+                <button onClick={handleNextThumbnails} className={styles.navButtonRight}>
                   <FontAwesomeIcon icon={faChevronRight} />
                 </button>
               </div>
