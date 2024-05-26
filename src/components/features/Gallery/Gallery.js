@@ -1,24 +1,34 @@
 import { Container } from 'react-bootstrap';
 import styles from './Gallery.module.scss';
 import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import Button from '../../common/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { faExchangeAlt, faEye, faShoppingBasket, faChevronLeft, faChevronRight }
-  from '@fortawesome/free-solid-svg-icons';
+import { faExchangeAlt, faEye, faShoppingBasket, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import RatingStars from '../RatingStars/RatingStars';
 import { useSelector } from 'react-redux';
 import { getAll } from '../../../redux/productsRedux';
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
 
 const Gallery = () => {
   const products = useSelector(getAll);
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [startIndex, setStartIndex] = useState(0);
+
+  const handleThumbnailClick = (index) => {
+    setActiveIndex(index);
+  };
+
+  const handleNextThumbnails = () => {
+    if (startIndex + 7 < products.length) {
+      setStartIndex(startIndex + 7);
+    }
+  };
+
+  const handlePrevThumbnails = () => {
+    if (startIndex - 7 >= 0) {
+      setStartIndex(startIndex - 7);
+    }
+  };
 
   return (
     <Container>
@@ -28,69 +38,55 @@ const Gallery = () => {
             <h3>furniture gallery</h3>
           </div>
           <div className={styles.navigation}>
-            <a href='' className={styles.active}>featured </a>
-            <a href=''>top seller </a>
-            <a href=''>sale off </a>
-            <a href=''>top rated </a>
+            <a href='' className={styles.active}>featured</a>
+            <a href=''>top seller</a>
+            <a href=''>sale off</a>
+            <a href=''>top rated</a>
           </div>
 
           <div className={styles.slider}>
             <div className={styles.productBox}>
-              <Swiper
-                style={{
-                  '--swiper-navigation-color': '#fff',
-                  '--swiper-pagination-color': '#fff',
-                }}
-                loop={true}
-                spaceBetween={10}
-                navigation={true}
-                thumbs={{ swiper: thumbsSwiper }}
-                modules={[FreeMode, Navigation, Thumbs]}
-                className={styles.swiper}
-              >
-                {products.map((product, index) => (
-                  <SwiperSlide className={styles.slide} key={index}>
-                    <div className={styles.actions}>
-                      <Button variant='outline'  >
-                        <FontAwesomeIcon icon={faHeart} />
-                      </Button>
-                      <Button variant='outline'  >
-                        <FontAwesomeIcon icon={faExchangeAlt} />
-                      </Button>
-                      <Button variant='outline'  >
-                        <FontAwesomeIcon icon={faEye} />
-                      </Button>
-                      <Button variant='outline'  >
-                        <FontAwesomeIcon icon={faShoppingBasket} />
-                      </Button>
-                    </div>
-                    <div className={styles.rating}>
-                      <RatingStars stars={product.stars}/>
-                    </div>
-                    <div className={styles.prices}>
-                      <p>{product.price}</p>
-                      <p>{product.oldPrice}</p>
-                    </div>
-                    <img src={product.image} alt={product.name} style={{ width: '100%' }} />
-                  </SwiperSlide>
+              <div className={styles.mainImage}>
+                <img src={products[activeIndex].image} alt={products[activeIndex].name} />
+                <div className={styles.actions}>
+                  <Button variant='outline'>
+                    <FontAwesomeIcon icon={faHeart} />
+                  </Button>
+                  <Button variant='outline'>
+                    <FontAwesomeIcon icon={faExchangeAlt} />
+                  </Button>
+                  <Button variant='outline'>
+                    <FontAwesomeIcon icon={faEye} />
+                  </Button>
+                  <Button variant='outline'>
+                    <FontAwesomeIcon icon={faShoppingBasket} />
+                  </Button>
+                </div>
+                <div className={styles.rating}>
+                  <RatingStars stars={products[activeIndex].stars} />
+                </div>
+                <div className={styles.prices}>
+                  <p>{products[activeIndex].price}</p>
+                  <p>{products[activeIndex].oldPrice}</p>
+                </div>
+              </div>
+              <div className={styles.thumbnails}>
+                <button onClick={handlePrevThumbnails} className={styles.navButton}>
+                  <FontAwesomeIcon icon={faChevronLeft} />
+                </button>
+                {products.slice(startIndex, startIndex + 7).map((product, index) => (
+                  <img
+                    key={index}
+                    src={product.image}
+                    alt={product.name}
+                    onClick={() => handleThumbnailClick( index)}
+                    className={index === activeIndex ? styles.activeThumbnail : ''}
+                  />
                 ))}
-              </Swiper>
-              <Swiper
-                onSwiper={setThumbsSwiper}
-                loop={true}
-                spaceBetween={10}
-                slidesPerView={8}
-                freeMode={true}
-                watchSlidesProgress={true}
-                modules={[FreeMode, Navigation, Thumbs]}
-                className={styles.swiper2}
-              >
-                {products.map((product, index) => (
-                  <SwiperSlide key={index}>
-                    <img src={product.image} alt={product.name} style={{ width: '100%' }} />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                <button onClick={handleNextThumbnails} className={styles.navButton}>
+                  <FontAwesomeIcon icon={faChevronRight} />
+                </button>
+              </div>
             </div>
           </div>
         </div>

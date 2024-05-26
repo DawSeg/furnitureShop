@@ -3,7 +3,7 @@
 .gallery {
   height: 600px;
   display: flex;
-  margin: 30px 0 60px 0;
+  margin-bottom: 40px;
 
   .rightSide {
     width: 43%;
@@ -19,7 +19,7 @@
 
     img {
       position: relative;
-      height: 320px;
+      height: 300px;
       width: auto;
       left: 270px;
       bottom: 30px;
@@ -45,7 +45,7 @@
 
         span {
           color: $green;
-          font-size: 45px;
+          font-size: 40px;
           font-weight: 700;
         }
       }
@@ -101,56 +101,78 @@
           background-color: $pink;
           border-top: 3px solid $primary;
         }
-
       }
     }
 
     .slider {
-
       .productBox {
+        .mainImage {
+          position: relative;
+          background-color: $pink;
 
-        .swiper {
-          height: 413px;
-       
-          .slide {
-            position: relative;
+          img {
+            height: 410px;
+            width: 100%;
+            object-fit: contain;
+          }
+        }
 
-            img {
-              height: 407px;
-              object-fit: cover;
-              width: auto;
+        .thumbnails {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 5px;
+
+          img {
+            width: 80px;
+            height: 80px;
+            margin: 0 5px 0 0;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+
+            &.activeThumbnail {
+              opacity: 1;
+              border: 2px solid $primary;
             }
 
-            .actions {
-              display: flex;
-              flex-direction: column;
-              position: absolute;
-              top: 50%;
-            }
-
-            .rating{
-              position: absolute;
-            }
-
-            .prices {
-              position: absolute;
+            &:hover {
+              opacity: 1;
             }
           }
+
+          .navButton {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            margin: 0 10px;
+            color: $primary;
+          }
+        }
+
+        .actions {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          display: flex;
+          gap: 10px;
+        }
+
+        .rating {
+          position: absolute;
+          bottom: 10px;
+          left: 10px;
+        }
+
+        .prices {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          display: flex;
+          flex-direction: column;
         }
       }
     }
-  }
-
-  .swiper-button-prev,
-  .swiper-button-next {
-    color: #000; // Kolor przycisków nawigacji
-  }
-
-  .swiper-pagination-bullet {
-    background-color: #000; // Kolor paginacji
-  }
-
-  .swiper-pagination-bullet-active {
-    background-color: #ff0000; // Kolor aktywnej paginacji
   }
 }
