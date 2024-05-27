@@ -14,6 +14,7 @@ const Gallery = () => {
   const comparisonList = useSelector(getCompared);
   const [activeIndex, setActiveIndex] = useState(0);
   const [startIndex, setStartIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
   const dispatch = useDispatch();
 
   const favouriteClickHandler = (e, id) => {
@@ -30,6 +31,7 @@ const Gallery = () => {
   };
 
   const handleThumbnailClick = (index) => {
+    isFading(true);
     setActiveIndex(index);
   };
 
