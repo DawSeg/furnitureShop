@@ -3,7 +3,7 @@
 .gallery {
   height: 600px;
   display: flex;
-  margin-bottom: 40px;
+  margin: 40px 0 70px 0;
 
   .rightSide {
     width: 42%;
@@ -214,7 +214,7 @@
           justify-content: center;
 
           p {
-            align-items: center;
+            margin: 8px;
             color: $alt-text-color;
             font-size: 18px;
             font-weight: 600;

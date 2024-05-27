@@ -85,7 +85,9 @@ const Gallery = () => {
                 </div>
                 <div className={styles.rating}>
                   <p>{products[activeIndex].name}</p>
-                  <RatingStars stars={products[activeIndex].stars} />
+                  <RatingStars stars={products[activeIndex].stars}
+                    userRating={products[activeIndex].userRating} id={products[activeIndex].id}
+                  />
                 </div>
               </div>
               <div className={styles.thumbnails}>
