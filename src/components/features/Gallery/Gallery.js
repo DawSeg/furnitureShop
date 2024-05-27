@@ -6,13 +6,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faExchangeAlt, faEye, faShoppingBasket, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import RatingStars from '../RatingStars/RatingStars';
-import { useSelector } from 'react-redux';
-import { getAll } from '../../../redux/productsRedux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCompare, getAll, getCompared, toggleFavourite } from '../../../redux/productsRedux';
 
 const Gallery = () => {
   const products = useSelector(getAll);
+  const comparisonList = useSelector(getCompared);
   const [activeIndex, setActiveIndex] = useState(0);
   const [startIndex, setStartIndex] = useState(0);
+  const dispatch = useDispatch();
+
+  const favouriteClickHandler = (e, id) => {
+    e.preventDefault();
+    dispatch(toggleFavourite(id));
+  };
+  const compareClickHandler = (e, id) => {
+    e.preventDefault();
+    if (comparisonList.length >= 4) {
+      alert('The maximum number of products for comparison is 4');
+    } else {
+      dispatch(addToCompare(id));
+    }
+  };
 
   const handleThumbnailClick = (index) => {
     setActiveIndex(index);
@@ -49,10 +64,10 @@ const Gallery = () => {
               <div className={styles.mainImage}>
                 <img src={products[activeIndex].image} alt={products[activeIndex].name} />
                 <div className={styles.actions}>
-                  <Button variant='outline'>
+                  <Button onClick={(e) => favouriteClickHandler(e, products[activeIndex].id)} variant='outline'>
                     <FontAwesomeIcon icon={faHeart} />
                   </Button>
-                  <Button variant='outline'>
+                  <Button onClick={(e) => compareClickHandler(e, products[activeIndex].id)} variant='outline'>
                     <FontAwesomeIcon icon={faExchangeAlt} />
                   </Button>
                   <Button variant='outline'>
