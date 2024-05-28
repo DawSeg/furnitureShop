@@ -61,7 +61,7 @@ const Gallery = () => {
       }
       setIsFadingThumbnails(false);
     }, 500);
-    
+
   };
 
   const handleCategoryChange = (category) => {
@@ -103,10 +103,14 @@ const Gallery = () => {
                   <>
                     <img src={filteredProducts[activeIndex].image} alt={filteredProducts[activeIndex].name} />
                     <div className={styles.actions}>
-                      <Button onClick={(e) => favouriteClickHandler(e, filteredProducts[activeIndex].id)} variant='outline'>
+                      <Button onClick={(e) => favouriteClickHandler(e, filteredProducts[activeIndex].id)} variant='outline'
+                        className={filteredProducts[activeIndex].favourite ? styles.active : ''}
+                      >
                         <FontAwesomeIcon icon={faHeart} />
                       </Button>
-                      <Button onClick={(e) => compareClickHandler(e, filteredProducts[activeIndex].id)} variant='outline'>
+                      <Button onClick={(e) => compareClickHandler(e, filteredProducts[activeIndex].id)} variant='outline'
+                        className={filteredProducts[activeIndex].comparison ? styles.active : ''}
+                      >
                         <FontAwesomeIcon icon={faExchangeAlt} />
                       </Button>
                       <Button variant='outline'>
