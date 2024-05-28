@@ -12,7 +12,7 @@ const reducerName = 'product';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
-const SET_USER_RATING = createActionName('USER_RAITNG');
+const SET_USER_RATING = createActionName('USER_RATNG');
 const TOGGLE_FAVOURITE = createActionName('TOGGLE_FAVOURITE');
 const ADD_TO_COMPARE = createActionName('ADD_TO_COMPARE');
 const REMOVE_COMPARE = createActionName('REMOVE_COMPARE');

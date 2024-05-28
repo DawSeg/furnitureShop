@@ -1,4 +1,4 @@
-import { Container, Overlay, Tooltip } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import styles from './Gallery.module.scss';
 import React, { useState } from 'react';
 import Button from '../../common/Button/Button';
@@ -14,13 +14,14 @@ const Gallery = () => {
   const comparisonList = useSelector(getCompared);
   const [activeIndex, setActiveIndex] = useState(0);
   const [startIndex, setStartIndex] = useState(0);
-  const [isFading, setIsFading] = useState(false);
+  const [category, setCategory] = useState('featured');
   const dispatch = useDispatch();
 
   const favouriteClickHandler = (e, id) => {
     e.preventDefault();
     dispatch(toggleFavourite(id));
   };
+
   const compareClickHandler = (e, id) => {
     e.preventDefault();
     if (comparisonList.length >= 4) {
@@ -31,12 +32,11 @@ const Gallery = () => {
   };
 
   const handleThumbnailClick = (index) => {
-    isFading(true);
     setActiveIndex(index);
   };
 
   const handleNextThumbnails = () => {
-    if (startIndex + 7 < products.length) {
+    if (startIndex + 7 < filteredProducts.length) {
       setStartIndex(startIndex + 7);
     }
   };
@@ -47,6 +47,20 @@ const Gallery = () => {
     }
   };
 
+  const handleCategoryChange = (category) => {
+    setCategory(category);
+    setStartIndex(0);
+    setActiveIndex(0);
+  };
+
+  const filteredProducts = products.filter((product) => {
+    if (category === 'featured') return product.featured;
+    if (category === 'topSeller') return product.topSeller;
+    if (category === 'saleOff') return product.saleOff;
+    if (category === 'topRated') return product.topRated;
+    return true; 
+  });
+
   return (
     <Container>
       <div className={styles.gallery}>
@@ -55,48 +69,52 @@ const Gallery = () => {
             <h3>furniture gallery</h3>
           </div>
           <div className={styles.navigation}>
-            <a href='' className={styles.active}>featured</a>
-            <a href=''>top seller</a>
-            <a href=''>sale off</a>
-            <a href=''>top rated</a>
+            <a href='#' onClick={(e) => { e.preventDefault(); handleCategoryChange('featured'); }} className={category === 'featured' ? styles.active : ''}>featured</a>
+            <a href='#' onClick={(e) => { e.preventDefault(); handleCategoryChange('topSeller'); }} className={category === 'topSeller' ? styles.active : ''}>top seller</a>
+            <a href='#' onClick={(e) => { e.preventDefault(); handleCategoryChange('saleOff'); }} className={category === 'saleOff' ? styles.active : ''}>sale off</a>
+            <a href='#' onClick={(e) => { e.preventDefault(); handleCategoryChange('topRated'); }} className={category === 'topRated' ? styles.active : ''}>top rated</a>
           </div>
 
           <div className={styles.slider}>
             <div className={styles.productBox}>
               <div className={styles.mainImage}>
-                <img src={products[activeIndex].image} alt={products[activeIndex].name} />
-                <div className={styles.actions}>
-                  <Button onClick={(e) => favouriteClickHandler(e, products[activeIndex].id)} variant='outline'>
-                    <FontAwesomeIcon icon={faHeart} />
-                  </Button>
-                  <Button onClick={(e) => compareClickHandler(e, products[activeIndex].id)} variant='outline'>
-                    <FontAwesomeIcon icon={faExchangeAlt} />
-                  </Button>
-                  <Button variant='outline'>
-                    <FontAwesomeIcon icon={faEye} />
-                  </Button>
-                  <Button variant='outline'>
-                    <FontAwesomeIcon icon={faShoppingBasket} />
-                  </Button>
-                </div>
-                <div className={styles.prices}>
-                  <p>${products[activeIndex].price}</p>
-                  {products[activeIndex].oldPrice && (
-                    <p className={styles.oldPrice}>${products[activeIndex].oldPrice}</p>
-                  )}
-                </div>
-                <div className={styles.rating}>
-                  <p>{products[activeIndex].name}</p>
-                  <RatingStars stars={products[activeIndex].stars}
-                    userRating={products[activeIndex].userRating} id={products[activeIndex].id}
-                  />
-                </div>
+                {filteredProducts.length > 0 && (
+                  <>
+                    <img src={filteredProducts[activeIndex].image} alt={filteredProducts[activeIndex].name} />
+                    <div className={styles.actions}>
+                      <Button onClick={(e) => favouriteClickHandler(e, filteredProducts[activeIndex].id)} variant='outline'>
+                        <FontAwesomeIcon icon={faHeart} />
+                      </Button>
+                      <Button onClick={(e) => compareClickHandler(e, filteredProducts[activeIndex].id)} variant='outline'>
+                        <FontAwesomeIcon icon={faExchangeAlt} />
+                      </Button>
+                      <Button variant='outline'>
+                        <FontAwesomeIcon icon={faEye} />
+                      </Button>
+                      <Button variant='outline'>
+                        <FontAwesomeIcon icon={faShoppingBasket} />
+                      </Button>
+                    </div>
+                    <div className={styles.prices}>
+                      <p>${filteredProducts[activeIndex].price}</p>
+                      {filteredProducts[activeIndex].oldPrice && (
+                        <p className={styles.oldPrice}>${filteredProducts[activeIndex].oldPrice}</p>
+                      )}
+                    </div>
+                    <div className={styles.rating}>
+                      <p>{filteredProducts[activeIndex].name}</p>
+                      <RatingStars stars={filteredProducts[activeIndex].stars}
+                        userRating={filteredProducts[activeIndex].userRating} id={filteredProducts[activeIndex].id}
+                      />
+                    </div>
+                  </>
+                )}
               </div>
               <div className={styles.thumbnails}>
                 <button onClick={handlePrevThumbnails} className={styles.navButtonLeft}>
                   <FontAwesomeIcon icon={faChevronLeft} />
                 </button>
-                {products.slice(startIndex, startIndex + 7).map((product, index) => (
+                {filteredProducts.slice(startIndex, startIndex + 7).map((product, index) => (
                   <img
                     key={startIndex + index}
                     src={product.image}
@@ -113,14 +131,17 @@ const Gallery = () => {
           </div>
         </div>
         <div className={styles.rightSide}>
+
           <div className={styles.description}>
             <p className={styles.price}>FROM
-              <span> ${products[0].price}</span>
+              <span> ${filteredProducts[0].price}</span>
             </p>
             <p className={styles.title}>Bedroom Bed</p>
             <Button className={styles.shopNow}>shop now</Button>
           </div>
-          <img src={products[29].image} alt={products[29].name}></img>
+          <img src={products[29].image} alt={filteredProducts[0].name} />
+
+
         </div>
       </div>
     </Container>

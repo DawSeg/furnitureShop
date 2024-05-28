@@ -21,6 +21,9 @@ const initialState = {
       oldPrice: 45,
       userRating: 4,
       discount: '-20%',
+      featured: true,
+      saleOff: true,
+      topRated: true,
     },
     {
       id: 'aenean-ru-bristique-2',
@@ -61,6 +64,8 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      topSeller: true,
+      saleOff: true,
     },
     {
       id: 'aenean-ru-bristique-5',
@@ -74,6 +79,8 @@ const initialState = {
       favourite: true,
       comparison: false,
       userRating: 0,
+      topSeller: true,
+      saleOff: true,
     },
     {
       id: 'aenean-ru-bristique-6',
@@ -87,6 +94,7 @@ const initialState = {
       favourite: true,
       comparison: false,
       userRating: 4,
+      featured: true,
     },
     {
       id: 'aenean-ru-bristique-7',
@@ -169,6 +177,7 @@ const initialState = {
       favourite: false,
       comparison: false,
       userRating: 0,
+      featured: true,
     },
     {
       id: 'aenean-ru-bristique-13',
@@ -183,6 +192,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      topRated: true,
     },
     {
       id: 'aenean-ru-bristique-14',
@@ -196,6 +206,7 @@ const initialState = {
       favourite: false,
       comparison: false,
       userRating: 0,
+      topRated: true,
     },
     {
       id: 'aenean-ru-bristique-15',
@@ -224,6 +235,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      topRated: true,
     },
     {
       id: 'aenean-ru-bristique-17',
@@ -237,6 +249,7 @@ const initialState = {
       favourite: false,
       comparison: false,
       userRating: 0,
+      topRated: true,
     },
     {
       id: 'aenean-ru-bristique-18',
@@ -265,6 +278,7 @@ const initialState = {
       oldPrice: 45,
       userRating: 0,
       hotDeal: true,
+      featured: true,
     },
     {
       id: 'aenean-ru-bristique-20',
@@ -332,6 +346,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      featured: true,
     },
     {
       id: 'aenean-ru-bristique-25',
@@ -360,6 +375,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      topSeller: true,
     },
     {
       id: 'aenean-ru-bristique-27',
@@ -402,6 +418,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      topSeller: true,
     },
     {
       id: 'aenean-ru-bristique-31',
@@ -416,6 +433,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      featured: true,
     },
     {
       id: 'aenean-ru-bristique-32',
@@ -472,6 +490,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      topRated: true,
     },
     {
       id: 'aenean-ru-bristique-36',
@@ -486,6 +505,8 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      topSeller: true,
+      topRated: true,
     },
     {
       id: 'aenean-ru-bristique-37',
@@ -500,6 +521,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      topRated: true,
     },
     {
       id: 'aenean-ru-bristique-38',
@@ -528,6 +550,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      topSeller: true,
     },
     {
       id: 'aenean-ru-bristique-40',
@@ -556,6 +579,8 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      featured: true,
+      saleOff: true,
     },
     {
       id: 'aenean-ru-bristique-42',
@@ -570,6 +595,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      saleOff: true,
     },
     {
       id: 'aenean-ru-bristique-43',
@@ -584,6 +610,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      saleOff: true,
     },
     {
       id: 'aenean-ru-bristique-44',
@@ -612,6 +639,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      topSeller: true,
     },
     {
       id: 'aenean-ru-bristique-46',
@@ -626,6 +654,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      topSeller: true,
     },
     {
       id: 'aenean-ru-bristique-47',
@@ -640,6 +669,8 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      topSeller: true,
+      saleOff: true,
     },
     {
       id: 'aenean-ru-bristique-48',
@@ -654,6 +685,9 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      featured: true,
+      topSeller: true,
+      saleOff: true,
     },
     {
       id: 'aenean-ru-bristique-49',
@@ -682,6 +716,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      featured: true,
     },
     {
       id: 'aenean-ru-bristique-51',
@@ -696,6 +731,7 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      saleOff: true,
     },
     {
       id: 'aenean-ru-bristique-52',
@@ -710,6 +746,9 @@ const initialState = {
       comparison: false,
       oldPrice: 45,
       userRating: 0,
+      featured: true,
+      saleOff: true,
+      topRated: true,
     },
 
   ],
