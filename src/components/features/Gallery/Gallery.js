@@ -8,6 +8,7 @@ import { faExchangeAlt, faEye, faShoppingBasket, faChevronLeft, faChevronRight }
 import RatingStars from '../RatingStars/RatingStars';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCompare, getAll, getCompared, toggleFavourite } from '../../../redux/productsRedux';
+import clsx from 'clsx';
 
 const Gallery = () => {
   const products = useSelector(getAll);
@@ -15,6 +16,8 @@ const Gallery = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [startIndex, setStartIndex] = useState(0);
   const [category, setCategory] = useState('featured');
+  const [isFadingCategory, setIsFadingCategory] = useState(false);
+  const [isFadingProduct, setIsFadingProduct] = useState(false);
   const dispatch = useDispatch();
 
   const favouriteClickHandler = (e, id) => {
@@ -32,7 +35,11 @@ const Gallery = () => {
   };
 
   const handleThumbnailClick = (index) => {
-    setActiveIndex(index);
+    setIsFadingProduct(true);
+    setTimeout(() => {
+      setActiveIndex(index);
+      setIsFadingProduct(false);
+    }, 500);
   };
 
   const handleNextThumbnails = () => {
@@ -48,9 +55,13 @@ const Gallery = () => {
   };
 
   const handleCategoryChange = (category) => {
-    setCategory(category);
-    setStartIndex(0);
-    setActiveIndex(0);
+    setIsFadingCategory(true);
+    setTimeout(() => {
+      setCategory(category);
+      setStartIndex(0);
+      setActiveIndex(0);
+      setIsFadingCategory(false);
+    }, 500);
   };
 
   const filteredProducts = products.filter((product) => {
@@ -58,7 +69,7 @@ const Gallery = () => {
     if (category === 'topSeller') return product.topSeller;
     if (category === 'saleOff') return product.saleOff;
     if (category === 'topRated') return product.topRated;
-    return true; 
+    return true;
   });
 
   return (
@@ -75,9 +86,9 @@ const Gallery = () => {
             <a href='#' onClick={(e) => { e.preventDefault(); handleCategoryChange('topRated'); }} className={category === 'topRated' ? styles.active : ''}>top rated</a>
           </div>
 
-          <div className={styles.slider}>
+          <div className={clsx(styles.slider, !isFadingCategory ? styles.fadeIn : styles.fadeOut)}>
             <div className={styles.productBox}>
-              <div className={styles.mainImage}>
+              <div className={clsx(styles.mainImage, !isFadingProduct ? styles.fadeIn : styles.fadeOut)}>
                 {filteredProducts.length > 0 && (
                   <>
                     <img src={filteredProducts[activeIndex].image} alt={filteredProducts[activeIndex].name} />
