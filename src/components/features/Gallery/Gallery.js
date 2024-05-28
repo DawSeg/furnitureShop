@@ -18,6 +18,7 @@ const Gallery = () => {
   const [category, setCategory] = useState('featured');
   const [isFadingCategory, setIsFadingCategory] = useState(false);
   const [isFadingProduct, setIsFadingProduct] = useState(false);
+  const [isFadingThumbnails, setIsFadingThumbnails] = useState(false);
   const dispatch = useDispatch();
 
   const favouriteClickHandler = (e, id) => {
@@ -43,15 +44,24 @@ const Gallery = () => {
   };
 
   const handleNextThumbnails = () => {
-    if (startIndex + 7 < filteredProducts.length) {
-      setStartIndex(startIndex + 7);
-    }
+    setIsFadingThumbnails(true);
+    setTimeout(() => {
+      if (startIndex + 7 < filteredProducts.length) {
+        setStartIndex(startIndex + 7);
+      }
+      setIsFadingThumbnails(false);
+    }, 500);
   };
 
   const handlePrevThumbnails = () => {
-    if (startIndex - 7 >= 0) {
-      setStartIndex(startIndex - 7);
-    }
+    setIsFadingThumbnails(true);
+    setTimeout(() => {
+      if (startIndex - 7 >= 0) {
+        setStartIndex(startIndex - 7);
+      }
+      setIsFadingThumbnails(false);
+    }, 500);
+    
   };
 
   const handleCategoryChange = (category) => {
@@ -125,15 +135,17 @@ const Gallery = () => {
                 <button onClick={handlePrevThumbnails} className={styles.navButtonLeft}>
                   <FontAwesomeIcon icon={faChevronLeft} />
                 </button>
-                {filteredProducts.slice(startIndex, startIndex + 7).map((product, index) => (
-                  <img
-                    key={startIndex + index}
-                    src={product.image}
-                    alt={product.name}
-                    onClick={() => handleThumbnailClick(startIndex + index)}
-                    className={startIndex + index === activeIndex ? styles.activeThumbnail : ''}
-                  />
-                ))}
+                <div className={clsx(styles.thumbnailsList, !isFadingThumbnails ? styles.fadeIn : styles.fadeOut)}>
+                  {filteredProducts.slice(startIndex, startIndex + 7).map((product, index) => (
+                    <img
+                      key={startIndex + index}
+                      src={product.image}
+                      alt={product.name}
+                      onClick={() => handleThumbnailClick(startIndex + index)}
+                      className={startIndex + index === activeIndex ? styles.activeThumbnail : ''}
+                    />
+                  ))}
+                </div>
                 <button onClick={handleNextThumbnails} className={styles.navButtonRight}>
                   <FontAwesomeIcon icon={faChevronRight} />
                 </button>
