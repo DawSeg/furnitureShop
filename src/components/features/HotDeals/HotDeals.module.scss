@@ -185,8 +185,38 @@
   }
 
   .rightSideDeal {
-    padding: 0 0 0 29px;
-    width: 68%;
+    position: relative;
+    margin: 0 0 0 29px;
+    padding: 0;
+    width: 65%;
+
+    .arrLeft {
+      position: absolute;
+      width: 50%;
+      bottom: 0;
+      left: 0;
+      background-color: $dark-gray;
+      text-align: center;
+      color: white;
+      padding: 5px 0 5px 0;
+    }
+
+    .arrRight {
+      position: absolute;
+      width: 50%;
+      bottom: 0;
+      left: 50%;
+      background-color: $dark-gray;
+      text-align: center;
+      color: white;
+      padding: 5px 0 5px 0;
+    }
+
+    .arrLeft:hover,
+    .arrRight:hover {
+      background-color: $dark-orange;
+      transition: 0.2s;
+    }
 
     img {
       position: relative;
@@ -264,34 +294,6 @@
         width: 100%;
         position: relative;
         height: 100%;
-
-        .arrLeft {
-          position: absolute;
-          width: 50%;
-          bottom: 0;
-          left: 0;
-          background-color: $dark-gray;
-          text-align: center;
-          color: white;
-          padding: 5px 0 5px 0;
-        }
-
-        .arrRight {
-          position: absolute;
-          width: 50%;
-          bottom: 0;
-          left: 50%;
-          background-color: $dark-gray;
-          text-align: center;
-          color: white;
-          padding: 5px 0 5px 0;
-        }
-
-        .arrLeft:hover,
-        .arrRight:hover {
-          background-color: $dark-orange;
-          transition: 0.2s;
-        }
       }
     }
   }
@@ -336,7 +338,7 @@
 
     .rightSideDeal {
       width: 100% !important;
-      padding: 0 !important;
+      margin: 0 !important;
 
       .shopNow {
         width: 110px !important;

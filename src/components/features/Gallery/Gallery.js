@@ -116,26 +116,6 @@ const Gallery = () => {
     return 7;
   };
 
-  const handleSwipeLeft = () => {
-    setIsFadingThumbnails(true);
-    setTimeout(() => {
-      if (startIndex - getThumbnailsPerPage() >= 0) {
-        setStartIndex(startIndex - getThumbnailsPerPage());
-      }
-      setIsFadingThumbnails(false);
-    }, 500);
-  };
-
-  const handleSwipeRight = () => {
-    setIsFadingThumbnails(true);
-    setTimeout(() => {
-      if (startIndex + getThumbnailsPerPage() < filteredProducts.length) {
-        setStartIndex(startIndex + getThumbnailsPerPage());
-      }
-      setIsFadingThumbnails(false);
-    }, 500);
-  };
-
   return (
     <Container>
       <div className={styles.gallery}>

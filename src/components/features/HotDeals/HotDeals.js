@@ -208,18 +208,17 @@ const PromotedProducts = () => {
                     <h4>Save up to 50% on all furniture</h4>
                     <Button className={styles.shopNow}>SHOP NOW</Button>
                   </div>
-                  <Button onClick={leftArrowhandler} className={`${styles.arrLeft} col-4 text-center`}>
-                    <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
-                  </Button>
-                  <Button onClick={rightArrowHandler} className={styles.arrRight}>
-                    <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
-                  </Button>
                 </div>
               )
             ))}
           </Swipeable>
+          <Button onClick={leftArrowhandler} className={`${styles.arrLeft} col-4 text-center`}>
+            <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
+          </Button>
+          <Button onClick={rightArrowHandler} className={styles.arrRight}>
+            <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
+          </Button>
         </div>
-
       </div>
     </Container>
   );
