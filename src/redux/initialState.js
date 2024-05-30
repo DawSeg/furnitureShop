@@ -187,7 +187,7 @@ const initialState = {
       stars: 2,
       promo: 'sale',
       newFurniture: true,
-      image: './images/furnitures/bed/bed2.jpg',
+      image: './images/furnitures/bed/bed12.png',
       favourite: false,
       comparison: false,
       oldPrice: 45,

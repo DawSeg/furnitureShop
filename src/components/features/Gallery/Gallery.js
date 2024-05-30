@@ -1,4 +1,4 @@
-import { Container } from 'react-bootstrap';
+import { Container, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import styles from './Gallery.module.scss';
 import React, { useState } from 'react';
 import Button from '../../common/Button/Button';
@@ -85,17 +85,25 @@ const Gallery = () => {
   return (
     <Container>
       <div className={styles.gallery}>
+
         <div className={styles.leftSide}>
           <div className={styles.header}>
             <h3>furniture gallery</h3>
           </div>
           <div className={styles.navigation}>
-            <a href='#' onClick={(e) => { e.preventDefault(); handleCategoryChange('featured'); }} className={category === 'featured' ? styles.active : ''}>featured</a>
-            <a href='#' onClick={(e) => { e.preventDefault(); handleCategoryChange('topSeller'); }} className={category === 'topSeller' ? styles.active : ''}>top seller</a>
-            <a href='#' onClick={(e) => { e.preventDefault(); handleCategoryChange('saleOff'); }} className={category === 'saleOff' ? styles.active : ''}>sale off</a>
-            <a href='#' onClick={(e) => { e.preventDefault(); handleCategoryChange('topRated'); }} className={category === 'topRated' ? styles.active : ''}>top rated</a>
+            <a href='#' onClick={(e) => { e.preventDefault(); handleCategoryChange('featured'); }}
+              className={category === 'featured' ? styles.active : ''}>featured
+            </a>
+            <a href='#' onClick={(e) => { e.preventDefault(); handleCategoryChange('topSeller'); }}
+              className={category === 'topSeller' ? styles.active : ''}>top seller
+            </a>
+            <a href='#' onClick={(e) => { e.preventDefault(); handleCategoryChange('saleOff'); }}
+              className={category === 'saleOff' ? styles.active : ''}>sale off
+            </a>
+            <a href='#' onClick={(e) => { e.preventDefault(); handleCategoryChange('topRated'); }}
+              className={category === 'topRated' ? styles.active : ''}>top rated
+            </a>
           </div>
-
           <div className={clsx(styles.slider, !isFadingCategory ? styles.fadeIn : styles.fadeOut)}>
             <div className={styles.productBox}>
               <div className={clsx(styles.mainImage, !isFadingProduct ? styles.fadeIn : styles.fadeOut)}>
@@ -103,22 +111,48 @@ const Gallery = () => {
                   <>
                     <img src={filteredProducts[activeIndex].image} alt={filteredProducts[activeIndex].name} />
                     <div className={styles.actions}>
-                      <Button onClick={(e) => favouriteClickHandler(e, filteredProducts[activeIndex].id)} variant='outline'
-                        className={filteredProducts[activeIndex].favourite ? styles.active : ''}
+                      <OverlayTrigger
+                        placement='right'
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={<Tooltip id='button-tooltip-2'>Add to favourite</Tooltip>}
                       >
-                        <FontAwesomeIcon icon={faHeart} />
-                      </Button>
-                      <Button onClick={(e) => compareClickHandler(e, filteredProducts[activeIndex].id)} variant='outline'
-                        className={filteredProducts[activeIndex].comparison ? styles.active : ''}
+                        <Button onClick={(e) => favouriteClickHandler(e, filteredProducts[activeIndex].id)}
+                          variant='outline'
+                          className={filteredProducts[activeIndex].favourite ? styles.active : ''}
+                        >
+                          <FontAwesomeIcon icon={faHeart} />
+                        </Button>
+                      </OverlayTrigger>
+                      <OverlayTrigger
+                        placement='right'
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={<Tooltip id='button-tooltip-2'>Add to compare</Tooltip>}
                       >
-                        <FontAwesomeIcon icon={faExchangeAlt} />
-                      </Button>
-                      <Button variant='outline'>
-                        <FontAwesomeIcon icon={faEye} />
-                      </Button>
-                      <Button variant='outline'>
-                        <FontAwesomeIcon icon={faShoppingBasket} />
-                      </Button>
+                        <Button onClick={(e) => compareClickHandler(e, filteredProducts[activeIndex].id)}
+                          variant='outline'
+                          className={filteredProducts[activeIndex].comparison ? styles.active : ''}
+                        >
+                          <FontAwesomeIcon icon={faExchangeAlt} />
+                        </Button>
+                      </OverlayTrigger>
+                      <OverlayTrigger
+                        placement='right'
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={<Tooltip id='button-tooltip-2'>Show more</Tooltip>}
+                      >
+                        <Button variant='outline'>
+                          <FontAwesomeIcon icon={faEye} />
+                        </Button>
+                      </OverlayTrigger>
+                      <OverlayTrigger
+                        placement='right'
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={<Tooltip id='button-tooltip-2'>Add to cart</Tooltip>}
+                      >
+                        <Button variant='outline'>
+                          <FontAwesomeIcon icon={faShoppingBasket} />
+                        </Button>
+                      </OverlayTrigger>
                     </div>
                     <div className={styles.prices}>
                       <p>${filteredProducts[activeIndex].price}</p>
@@ -129,7 +163,8 @@ const Gallery = () => {
                     <div className={styles.rating}>
                       <p>{filteredProducts[activeIndex].name}</p>
                       <RatingStars stars={filteredProducts[activeIndex].stars}
-                        userRating={filteredProducts[activeIndex].userRating} id={filteredProducts[activeIndex].id}
+                        userRating={filteredProducts[activeIndex].userRating} 
+                        id={filteredProducts[activeIndex].id}
                       />
                     </div>
                   </>
@@ -157,8 +192,8 @@ const Gallery = () => {
             </div>
           </div>
         </div>
-        <div className={styles.rightSide}>
 
+        <div className={styles.rightSide}>
           <div className={styles.description}>
             <p className={styles.price}>FROM
               <span> ${filteredProducts[0].price}</span>
@@ -166,9 +201,7 @@ const Gallery = () => {
             <p className={styles.title}>Bedroom Bed</p>
             <Button className={styles.shopNow}>shop now</Button>
           </div>
-          <img src={products[29].image} alt={filteredProducts[0].name} />
-
-
+          <img src={products[12].image} alt={filteredProducts[0].name} />
         </div>
       </div>
     </Container>
