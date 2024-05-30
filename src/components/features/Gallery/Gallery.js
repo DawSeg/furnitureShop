@@ -1,6 +1,7 @@
 import { Container, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import styles from './Gallery.module.scss';
 import React, { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import Button from '../../common/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
@@ -20,6 +21,11 @@ const Gallery = () => {
   const [isFadingProduct, setIsFadingProduct] = useState(false);
   const [isFadingThumbnails, setIsFadingThumbnails] = useState(false);
   const dispatch = useDispatch();
+
+  const fourteenPhotos = useMediaQuery({ minWidth: 996, maxWidth: 1199 });
+  const sixPhotos = useMediaQuery({ minWidth: 768, maxWidth: 995 });
+  const threePhotos = useMediaQuery({ minWidth: 400, maxWidth: 767 });
+  const twoPhotos = useMediaQuery({ maxWidth: 425 });
 
   const favouriteClickHandler = (e, id) => {
     e.preventDefault();
@@ -46,8 +52,8 @@ const Gallery = () => {
   const handleNextThumbnails = () => {
     setIsFadingThumbnails(true);
     setTimeout(() => {
-      if (startIndex + 7 < filteredProducts.length) {
-        setStartIndex(startIndex + 7);
+      if (startIndex + getThumbnailsPerPage() < filteredProducts.length) {
+        setStartIndex(startIndex + getThumbnailsPerPage());
       }
       setIsFadingThumbnails(false);
     }, 500);
@@ -56,12 +62,11 @@ const Gallery = () => {
   const handlePrevThumbnails = () => {
     setIsFadingThumbnails(true);
     setTimeout(() => {
-      if (startIndex - 7 >= 0) {
-        setStartIndex(startIndex - 7);
+      if (startIndex - getThumbnailsPerPage() >= 0) {
+        setStartIndex(startIndex - getThumbnailsPerPage());
       }
       setIsFadingThumbnails(false);
     }, 500);
-
   };
 
   const handleCategoryChange = (category) => {
@@ -81,6 +86,14 @@ const Gallery = () => {
     if (category === 'topRated') return product.topRated;
     return true;
   });
+
+  const getThumbnailsPerPage = () => {
+    if (fourteenPhotos) return 9;
+    if (sixPhotos) return 6;
+    if (threePhotos) return 3;
+    if (twoPhotos) return 2;
+    return 7;
+  };
 
   return (
     <Container>
@@ -163,7 +176,7 @@ const Gallery = () => {
                     <div className={styles.rating}>
                       <p>{filteredProducts[activeIndex].name}</p>
                       <RatingStars stars={filteredProducts[activeIndex].stars}
-                        userRating={filteredProducts[activeIndex].userRating} 
+                        userRating={filteredProducts[activeIndex].userRating}
                         id={filteredProducts[activeIndex].id}
                       />
                     </div>
@@ -175,7 +188,7 @@ const Gallery = () => {
                   <FontAwesomeIcon icon={faChevronLeft} />
                 </button>
                 <div className={clsx(styles.thumbnailsList, !isFadingThumbnails ? styles.fadeIn : styles.fadeOut)}>
-                  {filteredProducts.slice(startIndex, startIndex + 7).map((product, index) => (
+                  {filteredProducts.slice(startIndex, startIndex + getThumbnailsPerPage()).map((product, index) => (
                     <img
                       key={startIndex + index}
                       src={product.image}
