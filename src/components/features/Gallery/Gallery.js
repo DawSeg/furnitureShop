@@ -10,6 +10,7 @@ import RatingStars from '../RatingStars/RatingStars';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCompare, getAll, getCompared, toggleFavourite } from '../../../redux/productsRedux';
 import clsx from 'clsx';
+import Swipeable from '../Swipeable/Swipeable';
 
 const Gallery = () => {
   const products = useSelector(getAll);
@@ -76,6 +77,26 @@ const Gallery = () => {
       setStartIndex(0);
       setActiveIndex(0);
       setIsFadingCategory(false);
+    }, 500);
+  };
+
+  const handleSwipeLeft = () => {
+    setIsFadingThumbnails(true);
+    setTimeout(() => {
+      if (startIndex - getThumbnailsPerPage() >= 0) {
+        setStartIndex(startIndex - getThumbnailsPerPage());
+      }
+      setIsFadingThumbnails(false);
+    }, 500);
+  };
+
+  const handleSwipeRight = () => {
+    setIsFadingThumbnails(true);
+    setTimeout(() => {
+      if (startIndex + getThumbnailsPerPage() < filteredProducts.length) {
+        setStartIndex(startIndex + getThumbnailsPerPage());
+      }
+      setIsFadingThumbnails(false);
     }, 500);
   };
 
@@ -187,17 +208,19 @@ const Gallery = () => {
                 <button onClick={handlePrevThumbnails} className={styles.navButtonLeft}>
                   <FontAwesomeIcon icon={faChevronLeft} />
                 </button>
-                <div className={clsx(styles.thumbnailsList, !isFadingThumbnails ? styles.fadeIn : styles.fadeOut)}>
-                  {filteredProducts.slice(startIndex, startIndex + getThumbnailsPerPage()).map((product, index) => (
-                    <img
-                      key={startIndex + index}
-                      src={product.image}
-                      alt={product.name}
-                      onClick={() => handleThumbnailClick(startIndex + index)}
-                      className={startIndex + index === activeIndex ? styles.activeThumbnail : ''}
-                    />
-                  ))}
-                </div>
+                <Swipeable leftAction={handleSwipeLeft} rightAction={handleSwipeRight}>
+                  <div className={clsx(styles.thumbnailsList, !isFadingThumbnails ? styles.fadeIn : styles.fadeOut)}>
+                    {filteredProducts.slice(startIndex, startIndex + getThumbnailsPerPage()).map((product, index) => (
+                      <img
+                        key={startIndex + index}
+                        src={product.image}
+                        alt={product.name}
+                        onClick={() => handleThumbnailClick(startIndex + index)}
+                        className={startIndex + index === activeIndex ? styles.activeThumbnail : ''}
+                      />
+                    ))}
+                  </div>
+                </Swipeable>
                 <button onClick={handleNextThumbnails} className={styles.navButtonRight}>
                   <FontAwesomeIcon icon={faChevronRight} />
                 </button>
