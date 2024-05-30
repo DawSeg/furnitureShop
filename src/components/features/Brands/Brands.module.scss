@@ -1,0 +1,55 @@
+@import "../../../styles/settings.scss";
+
+.brands {
+  height: 110px;
+  padding: $base-padding 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid $super-light-gray;
+  border-bottom: 1px solid $super-light-gray;
+  margin-bottom: $base-padding;
+
+  .brandsBtn {
+    background-color: $dark-gray;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    height: 90px;
+    width: 30px;
+    color: $white;
+
+    &:hover {
+      background-color: $primary;
+    }
+  }
+}
+
+.brandsBtn:first-of-type {
+  margin-right: calc($base-padding / 2);
+}
+
+.brandsBtn:last-of-type {
+  margin-left: calc($base-padding / 2);
+}
+
+.brandsWrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+  overflow: hidden;
+
+  li {
+    list-style-type: none;
+    margin: 0 calc($base-padding / 2);
+    border: 1px solid $light-gray;
+    width: 125px;
+  }
+
+  img {
+    padding: calc($base-padding / 2);
+    width: 100%;
+    height: 100%;
+  }
+}

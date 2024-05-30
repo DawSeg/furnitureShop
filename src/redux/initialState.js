@@ -764,6 +764,40 @@ const initialState = {
         './images/furnitures/hot-deals/3.png',
       ],
   },
+  brands: [
+    {
+      id: 1,
+      image: './images/brands/brand-1.png',
+    },
+    {
+      id: 2,
+      image: './images/brands/brand-2.png',
+    },
+    {
+      id: 3,
+      image: './images/brands/brand-3.png',
+    },
+    {
+      id: 4,
+      image: './images/brands/brand-4.png',
+    },
+    {
+      id: 5,
+      image: './images/brands/brand-5.png',
+    },
+    {
+      id: 6,
+      image: './images/brands/brand-6.png',
+    },
+    {
+      id: 7,
+      image: './images/brands/brand-1.png',
+    },
+    {
+      id: 8,
+      image: './images/brands/brand-2.png',
+    },
+  ],
 };
 
 export default initialState;

@@ -106,12 +106,12 @@
 
     .slider {
       .productBox {
-        border-left: 1px solid #e1e1e1;
-        border-bottom: 1px solid #e1e1e1;
-        border-right: 1px solid #e1e1e1;
+        border-left: 1px solid $super-light-gray;
+        border-bottom: 1px solid $super-light-gray;
+        border-right: 1px solid $super-light-gray;
         
         .mainImage {
-          border-bottom: 1px solid #e1e1e1;
+          border-bottom: 1px solid $super-light-gray;
           position: relative;
           background-color: $pink;
 
