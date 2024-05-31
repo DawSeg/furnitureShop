@@ -24,12 +24,14 @@ const Brands = () => {
     }
   };
 
-  const fourPhotos = useMediaQuery({ minWidth: 768, maxWidth: 1199 });
-  const twoPhotos = useMediaQuery({ maxWidth: 767 });
+  const fivePhotos =useMediaQuery({minWidth: 1024, maxWidth: 1200});
+  const fourPhotos = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
+  const onePhoto = useMediaQuery({ maxWidth: 767 });
 
   const getThumbnailsPerPage = () => {
-    if (fourPhotos) return 4;
-    if (twoPhotos) return 2;
+    if (fivePhotos) return 4;
+    if (fourPhotos) return 3;
+    if (onePhoto) return 1;
     return 6;
   };
 

@@ -15,8 +15,7 @@
     border: none;
     cursor: pointer;
     font-size: 16px;
-    max-height: 95px;
-    min-height: 80px;
+    height: 95px;
     width: 35px;
     color: $white;
 
@@ -31,12 +30,12 @@
 }
 
 .brandsBtn:last-of-type {
-  margin-left: calc($base-padding / 2);
+  margin-left: auto;
 }
 
 .brandsWrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-content: center;
   height: 100%;
   overflow: hidden;
@@ -46,7 +45,8 @@
     list-style-type: none;
     margin: 0 calc($base-padding / 2);
     border: 1px solid $light-gray;
-    max-width: 175px;
+    height: 95px;
+    width: 170px;
   }
 
   img {

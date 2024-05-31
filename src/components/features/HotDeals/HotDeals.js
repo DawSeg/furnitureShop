@@ -80,7 +80,6 @@ const PromotedProducts = () => {
     }, 500);
   };
 
-
   const handleSwipeLeft = () => {
     leftArrowhandler();
   };
