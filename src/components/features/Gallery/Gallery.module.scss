@@ -299,3 +299,13 @@
     width: 100% !important;
   }
 }
+
+@media (max-width: 390px) {
+
+  .navigation {
+
+    a {
+      font-size: 14px !important;
+    }
+  }
+}
