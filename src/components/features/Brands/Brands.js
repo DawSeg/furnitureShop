@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Container } from 'react-bootstrap';
 import { useMediaQuery } from 'react-responsive';
+import Swipeable from '../Swipeable/Swipeable';
 
 const Brands = () => {
   const brands = useSelector(getBrands);
@@ -32,19 +33,29 @@ const Brands = () => {
     return 6;
   };
 
+  const handleSwipeLeft = () => {
+    handlePrevBrands();
+  };
+
+  const handleSwipeRight = () => {
+    handleNextBrands();
+  };
+
   return (
     <Container>
       <div className={styles.brands}>
         <button className={styles.brandsBtn} onClick={handlePrevBrands}>
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
-        <div className={styles.brandsWrapper}>
-          {brands.slice(startIndex, startIndex + getThumbnailsPerPage()).map(brand => (
-            <li key={brand.id}>
-              <img src={brand.image} alt={brand.id} />
-            </li>
-          ))}
-        </div>
+        <Swipeable leftAction={handleSwipeLeft} rightAction={handleSwipeRight}>
+          <div className={styles.brandsWrapper}>
+            {brands.slice(startIndex, startIndex + getThumbnailsPerPage()).map(brand => (
+              <li key={brand.id}>
+                <img src={brand.image} alt={brand.id} />
+              </li>
+            ))}
+          </div>
+        </Swipeable>
         <button className={styles.brandsBtn} onClick={handleNextBrands}>
           <FontAwesomeIcon icon={faChevronRight} />
         </button>

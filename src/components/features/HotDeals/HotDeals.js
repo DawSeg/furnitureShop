@@ -64,8 +64,7 @@ const PromotedProducts = () => {
     };
   }, [autoPlayLeft]);
 
-  const leftArrowhandler = (e) => {
-    e.preventDefault();
+  const leftArrowhandler = () => {
     setIsFadingRight(true);
     setTimeout(() => {
       setActiveDealRight((prevPage) => (prevPage - 1 + hotDeals.length) % hotDeals.length);
@@ -73,8 +72,7 @@ const PromotedProducts = () => {
     }, 500);
   };
 
-  const rightArrowHandler = (e) => {
-    e.preventDefault();
+  const rightArrowHandler = () => {
     setIsFadingRight(true);
     setTimeout(() => {
       setActiveDealRight((prevPage) => (prevPage + 1) % hotDeals.length);
@@ -84,23 +82,11 @@ const PromotedProducts = () => {
 
 
   const handleSwipeLeft = () => {
-    setIsFadingRight(true);
-    setTimeout(() => {
-      if (activeDealRight > 0) {
-        setActiveDealRight(activeDealRight - 1);
-      }
-      setIsFadingRight(false);
-    }, 500);
+    leftArrowhandler();
   };
 
   const handleSwipeRight = () => {
-    setIsFadingRight(true);
-    setTimeout(() => {
-      if (activeDealRight < hotDeals.length - 1) {
-        setActiveDealRight(activeDealRight + 1);
-      }
-      setIsFadingRight(false);
-    }, 500);
+    rightArrowHandler();
   };
 
   return (

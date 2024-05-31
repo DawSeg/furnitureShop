@@ -81,23 +81,11 @@ const Gallery = () => {
   };
 
   const handleSwipeLeft = () => {
-    setIsFadingThumbnails(true);
-    setTimeout(() => {
-      if (startIndex - getThumbnailsPerPage() >= 0) {
-        setStartIndex(startIndex - getThumbnailsPerPage());
-      }
-      setIsFadingThumbnails(false);
-    }, 500);
+    handlePrevThumbnails();
   };
 
   const handleSwipeRight = () => {
-    setIsFadingThumbnails(true);
-    setTimeout(() => {
-      if (startIndex + getThumbnailsPerPage() < filteredProducts.length) {
-        setStartIndex(startIndex + getThumbnailsPerPage());
-      }
-      setIsFadingThumbnails(false);
-    }, 500);
+    handleNextThumbnails();
   };
 
   const filteredProducts = products.filter((product) => {
