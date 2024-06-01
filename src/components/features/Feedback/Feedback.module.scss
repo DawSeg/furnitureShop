@@ -3,6 +3,20 @@
 .feedback {
   margin-bottom: 70px;
 
+  .apostrophe {
+    
+    img {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%);
+      position: relative;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      height: 80px;
+      width: auto;
+    }
+  }
+
   .header {
     display: flex;
     justify-content: space-between;
@@ -62,16 +76,6 @@
     justify-content: center;
     align-items: center;
   
-    .apostrophe {
-  
-      img {
-        margin-top: 30px;
-        margin-bottom: 30px;
-        height: 80px;
-        width: auto;
-      }
-    }
-  
     .feedbackText {
       width: 75%;
       text-align: center;
@@ -83,10 +87,11 @@
       width: 18%;
       margin-top: 30px ;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
   
       img {
+        margin-right: 20px;
         border-radius: 7px;
         height: 90px;
         width: 90px;

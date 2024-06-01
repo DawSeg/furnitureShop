@@ -1,47 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Feedback.module.scss';
 import { Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { getFeedback } from '../../../redux/feedbackRedux';
+import Swipeable from '../Swipeable/Swipeable';
 
 const Feedback = () => {
+  const feedbacks = useSelector(getFeedback);
+  const [activeFeedback, setActiveFeedback] = useState(0);
 
-  const feedback = useSelector(getFeedback);
+  const handleDotClick = (index) => {
+    setActiveFeedback(index);
+  };
+
+  const handleSwipeLeft = () => {
+    setActiveFeedback((prevPage) => (prevPage - 1 + feedbacks.length) % feedbacks.length);
+  };
+
+  const handleSwipeRight = () => {
+    setActiveFeedback((prevPage) => (prevPage + 1) % feedbacks.length);
+  };
 
   return (
     <Container>
       <div className={styles.feedback}>
         <div className={styles.header}>
-          <h3>client feedback</h3>
+          <h3>Client Feedback</h3>
           <div className={styles.dots}>
-            <a href='#' className={styles.active}>
-              <FontAwesomeIcon icon={faCircle} />
-            </a>
-            <a href='#'>
-              <FontAwesomeIcon icon={faCircle} />
-            </a>
-            <a href='#'>
-              <FontAwesomeIcon icon={faCircle} />
-            </a>
+            {feedbacks.map((feedback, index) => (
+              <a
+                key={index}
+                href='#'
+                onClick={(e) => { e.preventDefault(); handleDotClick(index); }}
+                className={index === activeFeedback ? styles.active : ''}
+              >
+                <FontAwesomeIcon icon={faCircle} />
+              </a>
+            ))}
           </div>
         </div>
-        <div className={styles.feedbackBox}>
-          <div className={styles.apostrophe}>
-            <img src='../../../../images/feedback/apostrophe.png'></img>
-          </div>
-          <p className={styles.feedbackText}>
-            {feedback[0].comment}
-          </p>
-          <div className={styles.author}>
-            <img src={feedback[0].image}></img>
-            <p className={styles.name}>
-              {feedback[0].name} <br />
-              <span className={styles.client}>{feedback[0].client}</span>
-            </p>
-          </div>
+        <div className={styles.apostrophe}>
+          <img src='../../../../images/feedback/apostrophe.png' alt='apostrophe' />
         </div>
+        {(
+          <Swipeable leftAction={handleSwipeRight} rightAction={handleSwipeLeft}>
+            <div className={styles.feedbackBox}>
+              <p className={styles.feedbackText}>
+                {feedbacks[activeFeedback].comment}
+              </p>
+              <div className={styles.author}>
+                <img src={feedbacks[activeFeedback].image} alt={feedbacks[activeFeedback].name} />
+                <p className={styles.name}>
+                  {feedbacks[activeFeedback].name} <br />
+                  <span className={styles.client}>{feedbacks[activeFeedback].client}</span>
+                </p>
+              </div>
+            </div>
+          </Swipeable>
+        )}
       </div>
     </Container>
   );
