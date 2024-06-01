@@ -35,9 +35,9 @@ export default function reducer(statePart = [], action = {}) {
     case ADD_TO_COMPARE:
       if (getCompared({ products: statePart }).length >= 4) {
         alert('The maximum number of products for comparison is 4');
-        return statePart; // Stan pozostaje bez zmian
+        return statePart;
       }
-      
+
       return statePart.map(product =>
         product.id === action.payload 
           ? { ...product, comparison: true }

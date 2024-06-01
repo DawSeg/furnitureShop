@@ -8,13 +8,12 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faExchangeAlt, faEye, faShoppingBasket, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import RatingStars from '../RatingStars/RatingStars';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCompare, getAll, getCompared, toggleFavourite } from '../../../redux/productsRedux';
+import { addToCompare, getAll, toggleFavourite } from '../../../redux/productsRedux';
 import clsx from 'clsx';
 import Swipeable from '../Swipeable/Swipeable';
 
 const Gallery = () => {
   const products = useSelector(getAll);
-  const comparisonList = useSelector(getCompared);
   const [activeIndex, setActiveIndex] = useState(0);
   const [startIndex, setStartIndex] = useState(0);
   const [category, setCategory] = useState('featured');

@@ -7,13 +7,11 @@ import { faExchangeAlt, faShoppingBasket }
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import RatingStars from '../../features/RatingStars/RatingStars';
-import { useDispatch, useSelector } from 'react-redux';
-import { addToCompare, getCompared, toggleFavourite } from '../../../redux/productsRedux';
+import { useDispatch } from 'react-redux';
+import { addToCompare, toggleFavourite } from '../../../redux/productsRedux';
 
 const ProductBox = ({ name, id, price, promo, stars, image, favourite,
   comparison, oldPrice, userRating }) => {
-
-  const comparisonList = useSelector(state => getCompared(state));
   const dispatch = useDispatch();
   const favouriteClickHandler = (e) => {
     e.preventDefault();
