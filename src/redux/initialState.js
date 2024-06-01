@@ -798,6 +798,32 @@ const initialState = {
       image: './images/brands/brand-2.png',
     },
   ],
+  feedbacks: [
+    {
+      id: 1,
+      comment:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mollis justo id leo cursus laoreet. Sed vulputate tempus nisi ut tincidunt. Duis dapibus dictum ligula. Integer elementum, erat ac blandit blandit, augue nunc molestie.',
+      image: './images/feedback/1.jpg',
+      name: 'Neo',
+      client: 'Furniture client',
+    },
+    {
+      id: 2,
+      comment:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mollis justo id leo cursus laoreet. Sed vulputate tempus nisi ut tincidunt. Duis dapibus dictum ligula. Integer elementum, erat ac blandit blandit, augue nunc molestie.',
+      image: './images/feedback/2.jpeg',
+      name: 'Gandalf',
+      client: 'Furniture client',
+    },
+    {
+      id: 3,
+      comment:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mollis justo id leo cursus laoreet. Sed vulputate tempus nisi ut tincidunt. Duis dapibus dictum ligula. Integer elementum, erat ac blandit blandit, augue nunc molestie.',
+      image: './images/feedback/3.jpg',
+      name: 'Batman',
+      client: 'Furniture client',
+    },
+  ],
 };
 
 export default initialState;
