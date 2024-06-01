@@ -30,7 +30,7 @@
 }
 
 .brandsBtn:last-of-type {
-  margin-left: auto;
+  margin-left: calc($base-padding / 2);
 }
 
 .brandsWrapper {

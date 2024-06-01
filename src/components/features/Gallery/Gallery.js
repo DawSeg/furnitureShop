@@ -35,11 +35,7 @@ const Gallery = () => {
 
   const compareClickHandler = (e, id) => {
     e.preventDefault();
-    if (comparisonList.length >= 4) {
-      alert('The maximum number of products for comparison is 4');
-    } else {
-      dispatch(addToCompare(id));
-    }
+    dispatch(addToCompare(id));
   };
 
   const handleThumbnailClick = (index) => {
