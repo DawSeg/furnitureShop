@@ -59,7 +59,7 @@ const PromotedProducts = () => {
     };
   }, [autoPlayLeft]);
 
-  const leftArrowhandler = () => {
+  const leftArrowHandler = () => {
     setIsFadingRight(true);
     setTimeout(() => {
       setActiveDealRight((prevPage) => (prevPage - 1 + hotDeals.length) % hotDeals.length);
@@ -76,7 +76,7 @@ const PromotedProducts = () => {
   };
 
   const handleSwipeLeft = () => {
-    leftArrowhandler();
+    leftArrowHandler();
   };
 
   const handleSwipeRight = () => {
@@ -192,10 +192,10 @@ const PromotedProducts = () => {
               )
             ))}
           </Swipeable>
-          <Button onClick={leftArrowhandler} className={`${styles.arrLeft} col-4 text-center`}>
+          <Button onClick={(e) => {e.preventDefault(); leftArrowHandler();}} className={`${styles.arrLeft} col-4 text-center`}>
             <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
           </Button>
-          <Button onClick={rightArrowHandler} className={styles.arrRight}>
+          <Button onClick={(e) => {e.preventDefault(); rightArrowHandler();}} className={styles.arrRight}>
             <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
           </Button>
         </div>
