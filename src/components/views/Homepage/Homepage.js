@@ -18,8 +18,8 @@ const Homepage = () => (
     <Sales />
     <NewFurniture />
     <Gallery />
-    <Brands />
     <Feedback />
+    <Brands />
   </div>
 );
 

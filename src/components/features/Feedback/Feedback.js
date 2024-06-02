@@ -44,22 +44,22 @@ const Feedback = () => {
         <div className={styles.apostrophe}>
           <img src='../../../../images/feedback/apostrophe.png' alt='apostrophe' />
         </div>
-        {(
-          <Swipeable leftAction={handleSwipeRight} rightAction={handleSwipeLeft}>
-            <div className={styles.feedbackBox}>
-              <p className={styles.feedbackText}>
-                {feedbacks[activeFeedback].comment}
+
+        <Swipeable leftAction={handleSwipeRight} rightAction={handleSwipeLeft}>
+          <div className={styles.feedbackBox}>
+            <p className={styles.feedbackText}>
+              {feedbacks[activeFeedback].comment}
+            </p>
+            <div className={styles.author}>
+              <img src={feedbacks[activeFeedback].image} alt={feedbacks[activeFeedback].name} />
+              <p className={styles.name}>
+                {feedbacks[activeFeedback].name} <br />
+                <span className={styles.client}>{feedbacks[activeFeedback].client}</span>
               </p>
-              <div className={styles.author}>
-                <img src={feedbacks[activeFeedback].image} alt={feedbacks[activeFeedback].name} />
-                <p className={styles.name}>
-                  {feedbacks[activeFeedback].name} <br />
-                  <span className={styles.client}>{feedbacks[activeFeedback].client}</span>
-                </p>
-              </div>
             </div>
-          </Swipeable>
-        )}
+          </div>
+        </Swipeable>
+
       </div>
     </Container>
   );
