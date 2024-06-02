@@ -6,21 +6,35 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { getFeedback } from '../../../redux/feedbackRedux';
 import Swipeable from '../Swipeable/Swipeable';
+import clsx from 'clsx';
 
 const Feedback = () => {
   const feedbacks = useSelector(getFeedback);
   const [activeFeedback, setActiveFeedback] = useState(0);
+  const [isFading, setIsFading] = useState(false);
 
   const handleDotClick = (index) => {
-    setActiveFeedback(index);
+    setIsFading(true);
+    setTimeout(() => {
+      setActiveFeedback(index);
+      setIsFading(false);
+    }, 500);
   };
 
   const handleSwipeLeft = () => {
-    setActiveFeedback((prevPage) => (prevPage - 1 + feedbacks.length) % feedbacks.length);
+    setIsFading(true);
+    setTimeout(() => {
+      setActiveFeedback((prevPage) => (prevPage - 1 + feedbacks.length) % feedbacks.length);
+      setIsFading(false);
+    }, 500);
   };
 
   const handleSwipeRight = () => {
-    setActiveFeedback((prevPage) => (prevPage + 1) % feedbacks.length);
+    setIsFading(true);
+    setTimeout(() => {
+      setActiveFeedback((prevPage) => (prevPage + 1) % feedbacks.length);
+      setIsFading(false);
+    }, 500);
   };
 
   return (
@@ -46,7 +60,7 @@ const Feedback = () => {
         </div>
 
         <Swipeable leftAction={handleSwipeRight} rightAction={handleSwipeLeft}>
-          <div className={styles.feedbackBox}>
+          <div className={clsx(styles.feedbackBox, !isFading ? styles.fadeIn : styles.fadeOut)}>
             <p className={styles.feedbackText}>
               {feedbacks[activeFeedback].comment}
             </p>
