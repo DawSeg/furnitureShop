@@ -808,7 +808,7 @@ const initialState = {
       client: 'Furniture client',
     },
     {
-      id: 2,
+      id: 2, 
       comment:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mollis justo id leo cursus laoreet. Sed vulputate tempus nisi ut tincidunt. Duis dapibus dictum ligula. Integer elementum, erat ac blandit blandit, augue nunc molestie.',
       image: './images/feedback/2.jpg',

@@ -7,6 +7,7 @@ import styles from './MenuBar.module.scss';
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const MenuBar = ({ children }) => {
   return (
@@ -33,16 +34,16 @@ const MenuBar = ({ children }) => {
                   <Nav.Link href='#' className={styles.active}>
                     Home
                   </Nav.Link>
-                  <Nav.Link href='#'>Furniture</Nav.Link>
-                  <Nav.Link href='#'>Chair</Nav.Link>
-                  <Nav.Link href='#'>Table</Nav.Link>
-                  <Nav.Link href='#'>Sofa</Nav.Link>
-                  <Nav.Link href='#'>Bedroom</Nav.Link>
-                  <Nav.Link href='#'>Blog</Nav.Link>
+                  <Nav.Link as={Link} to='/shop/furniture'>Furniture</Nav.Link>
+                  <Nav.Link as={Link} to='/shop/chair'>Chair</Nav.Link>
+                  <Nav.Link as={Link} to='/shop/table'>Table</Nav.Link>
+                  <Nav.Link as={Link} to='/shop/sofa'>Sofa</Nav.Link>
+                  <Nav.Link as={Link} to='/shop/bedroom'>Bedroom</Nav.Link>
+                  <Nav.Link as={Link} to='/shop/blog'>Blog</Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Container>
-          </Navbar>
+          </Navbar> 
         </div>
       </div>
     </div>
