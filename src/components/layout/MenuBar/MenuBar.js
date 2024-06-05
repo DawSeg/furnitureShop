@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import ProductSearch from '../../features/ProductSearch/ProductSearch';
@@ -7,9 +7,15 @@ import styles from './MenuBar.module.scss';
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { getAll } from '../../../redux/categoriesRedux';
+import { useSelector } from 'react-redux';
+import clsx from 'clsx';
 
 const MenuBar = ({ children }) => {
+  const categories = useSelector(getAll);
+  const location = useLocation();
+
   return (
     <div className={styles.root}>
       <div className='container'>
@@ -31,19 +37,22 @@ const MenuBar = ({ children }) => {
                 id='basic-navbar-nav'
               >
                 <Nav className={'ms-lg-auto mr-auto  ' + styles.navigation}>
-                  <Nav.Link href='#' className={styles.active}>
-                    Home
-                  </Nav.Link>
-                  <Nav.Link as={Link} to='/shop/furniture'>Furniture</Nav.Link>
-                  <Nav.Link as={Link} to='/shop/chair'>Chair</Nav.Link>
-                  <Nav.Link as={Link} to='/shop/table'>Table</Nav.Link>
-                  <Nav.Link as={Link} to='/shop/sofa'>Sofa</Nav.Link>
-                  <Nav.Link as={Link} to='/shop/bedroom'>Bedroom</Nav.Link>
-                  <Nav.Link as={Link} to='/shop/blog'>Blog</Nav.Link>
+                  <Nav.Link as={Link} to='/' className={clsx({ [styles.active]: location.pathname === '/' })}>Home</Nav.Link>
+                  {categories.map(category => (
+                    <Nav.Link
+                      key={category.id}
+                      as={Link}
+                      to={`/shop/${category.name}`}
+                      className={clsx({ [styles.active]: location.pathname === `/shop/${category.name}` })}
+                    >
+                      {category.name}
+                    </Nav.Link>
+                  ))}
+                  <Nav.Link as={Link} to='/shop/blog' className={clsx({ [styles.active]: location.pathname === '/shop/blog' })}>Blog</Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Container>
-          </Navbar> 
+          </Navbar>
         </div>
       </div>
     </div>
