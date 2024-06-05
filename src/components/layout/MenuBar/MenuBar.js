@@ -8,12 +8,12 @@ import { Nav, Navbar, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import { getAll } from '../../../redux/categoriesRedux';
+import { getNavCategories } from '../../../redux/categoriesRedux';
 import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 
 const MenuBar = ({ children }) => {
-  const categories = useSelector(getAll);
+  const categories = useSelector(getNavCategories);
   const location = useLocation();
 
   return (
