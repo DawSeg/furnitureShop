@@ -12,11 +12,13 @@ import { addToCompare, toggleFavourite } from '../../../redux/productsRedux';
 
 const ProductBox = ({ name, id, price, promo, stars, image, favourite,
   comparison, oldPrice, userRating }) => {
+
   const dispatch = useDispatch();
   const favouriteClickHandler = (e) => {
     e.preventDefault();
     dispatch(toggleFavourite(id));
   };
+  
   const compareClickHandler = e => {
     e.preventDefault();
     dispatch(addToCompare(id));

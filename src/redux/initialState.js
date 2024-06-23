@@ -11,7 +11,7 @@ const initialState = {
     { id: 'chair', name: 'Chair' },
     { id: 'table', name: 'Table' },
     { id: 'sofa', name: 'Sofa' },
-    { id: 'bedroom', name: 'Bedroom' },
+    { id: 'bed', name: 'Bedroom' },
   ],
   products: [
     {

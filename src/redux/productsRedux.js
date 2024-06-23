@@ -6,6 +6,8 @@ export const getNew = ({ products }) =>
   products.filter(item => item.newFurniture === true);
 export const getHotDeals = ({products}) => products.filter(product => product.hotDeal);
 export const getHotDealsCategory =({hotDeals}) => hotDeals.indoorFurniture;
+export const getProductsByCategory = ({ products }, categoryId) =>
+  products.filter(product => product.category === categoryId);
 
 /* action name creator */
 const reducerName = 'product';
