@@ -17,9 +17,6 @@ const ProductList = () => {
     currentCategory ? getProductsByCategory(state, currentCategory.id) : []
   );
 
-  console.log('Current category:', currentCategory);
-  console.log('Current products:', currentProducts);
-
   if (!currentCategory) {
     return <div className={styles.root}>Category not found</div>;
   }
@@ -28,12 +25,14 @@ const ProductList = () => {
     <div className={styles.root}>
       <Container>
         <div className={styles.productsHeader}>
-          <h2>{currentCategory.title}</h2>
+          <h2 className={styles.categoryHeader}>
+            Products found in {currentCategory.name} category:
+          </h2>
         </div>
         <section className='row'>
           {currentProducts.map(product => (
-            <div key={product.id} className='col-md-4 col-sm-12'>
-              <ProductBox {...product}/>
+            <div key={product.id} className={'col-md-4 col-sm-12'}>
+              <ProductBox {...product} />
             </div>
           ))}
         </section>

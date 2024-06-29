@@ -7,10 +7,10 @@ const initialState = {
     { id: 'dining', name: 'Dining' },
   ],
   navigationCategories: [
-    { id: 'chair', name: 'Chair' },
-    { id: 'table', name: 'Table' },
-    { id: 'sofa', name: 'Sofa' },
-    { id: 'bed', name: 'Bedroom' },
+    { id: 'chair', name: 'chair' },
+    { id: 'table', name: 'table' },
+    { id: 'sofa', name: 'sofa' },
+    { id: 'bed', name: 'bedroom' },
   ],
   products: [
     {

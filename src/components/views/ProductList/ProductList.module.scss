@@ -2,4 +2,11 @@
 
 .root {
   padding: $base-padding 0;
+
+  .categoryHeader {
+    text-align: center;
+    color: $primary;
+    margin: 70px 0 80px 0;
+    font-size: 46px;
+  }
 }
