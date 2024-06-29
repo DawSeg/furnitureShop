@@ -4,7 +4,8 @@ import { getCompared, removeCompare } from '../../../redux/productsRedux';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../common/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import { faWindowClose, faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const ComparisonBar = () => {
   const comparedProducts = useSelector(state => getCompared(state));
@@ -25,6 +26,15 @@ const ComparisonBar = () => {
           </Button>
         </div>
       )}
+      <OverlayTrigger
+        placement='right'
+        delay={{ show: 250, hide: 400 }}
+        overlay={<Tooltip id='button-tooltip-2'>Compare</Tooltip>}
+      >
+        <Button onClick={e => e.preventDefault()} variant='small' className={styles.compare}>
+          <FontAwesomeIcon icon={faExchangeAlt} />
+        </Button>
+      </OverlayTrigger>
     </div>
   );
 };

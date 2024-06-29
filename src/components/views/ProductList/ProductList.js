@@ -26,12 +26,12 @@ const ProductList = () => {
       <Container>
         <div className={styles.productsHeader}>
           <h2 className={styles.categoryHeader}>
-            Products found in {currentCategory.name} category:
+            Products in {currentCategory.name} category:
           </h2>
         </div>
         <section className='row'>
           {currentProducts.map(product => (
-            <div key={product.id} className={'col-md-4 col-sm-12'}>
+            <div key={product.id} className='col-md-4 col-sm-12'>
               <ProductBox {...product} />
             </div>
           ))}

@@ -10,3 +10,12 @@
     font-size: 46px;
   }
 }
+
+@media (max-width:767px) {
+
+  .root {
+    .categoryHeader {
+      font-size: 26px;
+    }
+  }
+}
