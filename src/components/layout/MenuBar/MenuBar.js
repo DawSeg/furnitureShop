@@ -37,7 +37,12 @@ const MenuBar = ({ children }) => {
                 id='basic-navbar-nav'
               >
                 <Nav className={'ms-lg-auto mr-auto  ' + styles.navigation}>
-                  <Nav.Link as={Link} to='/' className={clsx({ [styles.active]: location.pathname === '/' })}>Home</Nav.Link>
+                  <Nav.Link as={Link} to='/'
+                    className={clsx({ [styles.active]: location.pathname === '/' })}>Home
+                  </Nav.Link>
+                  <Nav.Link as={Link} to='/shop/furniture'
+                    className={clsx({ [styles.active]: location.pathname === '/shop/furniture' })}>Furniture
+                  </Nav.Link>
                   {categories.map(category => (
                     <Nav.Link
                       key={category.id}

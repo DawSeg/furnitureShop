@@ -6,6 +6,7 @@ import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
 import { getCategoryById } from '../../../redux/categoriesRedux';
 import { getProductsByCategory } from '../../../redux/productsRedux';
+import { Container } from 'react-bootstrap';
 
 const ProductList = () => {
   const { categoryId } = useParams();
@@ -16,28 +17,28 @@ const ProductList = () => {
     currentCategory ? getProductsByCategory(state, currentCategory.id) : []
   );
 
+  console.log('Current category:', currentCategory);
+  console.log('Current products:', currentProducts);
+
   if (!currentCategory) {
     return <div className={styles.root}>Category not found</div>;
   }
 
   return (
     <div className={styles.root}>
-      <div className='container'>
-        <p>
-          Bedroom <strong>Furniture</strong>
-        </p>
+      <Container>
         <div className={styles.productsHeader}>
           <h2>{currentCategory.title}</h2>
         </div>
         <section className='row'>
           {currentProducts.map(product => (
             <div key={product.id} className='col-md-4 col-sm-12'>
-              <ProductBox {...product} {...product.image} />
+              <ProductBox {...product}/>
             </div>
           ))}
         </section>
         <Brands />
-      </div>
+      </Container>
     </div>
   );
 };
