@@ -31,7 +31,9 @@ const ComparisonBar = () => {
         delay={{ show: 250, hide: 400 }}
         overlay={<Tooltip id='button-tooltip-2'>Compare</Tooltip>}
       >
-        <Button onClick={e => e.preventDefault()} variant='small' className={styles.compare}>
+        <Button onClick={e => e.preventDefault()} variant='small'
+          className={comparedProducts.length > 0 ? styles.compareVisible : styles.compare}
+        >
           <FontAwesomeIcon icon={faExchangeAlt} />
         </Button>
       </OverlayTrigger>
